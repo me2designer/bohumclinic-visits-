@@ -1,0 +1,41 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+/**************************************************************************** 
+    common
+****************************************************************************/
+.noTouch {pointer-events:none} /* Touch, Click 방지 */
+.noDrag {-ms-user-select:none;-moz-user-select:-moz-none;-webkit-user-select:none;-khtml-user-select:none;user-select:none} /* Text 드래그 방지 */
+
+
+/**************************************************************************** 
+    layout
+****************************************************************************/
+/* Frame */
+#wrap {visibility:visible;overflow:visible;position:relative;font-size:inherit;opacity:1}
+#header {position:relative;z-index:30}
+#container {position:relative;z-index:20}
+#footer {position:relative;z-index:20}
+
+/* FOOTER */
+#footer {padding:30px 0;background-color:#595959}
+#footer::after {content:'';position:absolute;top:80px;left:0;right:0;height:1px;background-color:#757575}
+#footer .inner-fulid {position:relative}
+#footer .list_about {margin-bottom:30px;font-size:15px;font-weight:bold;color:#fff}
+#footer .list_about .borderline {display:inline-block;margin:0 35px;width:2px;height:13px;vertical-align:middle;background-color:#fff}
+#footer .list_sns {position:absolute;top:-9px;right:-10px}
+#footer .list_sns::after {content:'';display:block;visibility:hidden;height:0;font-size:0;clear:both}
+#footer .list_sns .link_sns {float:left;width:36px;height:35px;margin-left:18px;text-indent:-9999px;background:url('/img/visits/common_2020/footer_ico_sns.png') 0 0 no-repeat}
+#footer .list_sns .link_sns:first-child {margin-left:0}
+#footer .list_sns .link_sns.instagram {background-position-x:0}
+#footer .list_sns .link_sns.youtube {background-position-x:-36px}
+#footer .list_sns .link_sns.facebook {background-position-x:-72px}
+#footer .list_sns .link_sns.blog {background-position-x:100%}
+#footer .list_addr {padding-top:22px}
+#footer .list_addr .borderline {display:inline-block;margin:0 10px;width:2px;height:13px;vertical-align:middle;background-color:rgba(255,255,255,0.7)}
+#footer .list_addr p {font-size:14px;color:rgba(255,255,255,0.7);letter-spacing:0.05em}
+#footer .list_addr p.lst {padding-top:5px}
+#footer .toTop {position:fixed;right:30px;bottom:30px;z-index:10;padding:10px 12px;border:1px solid #ddd;background-color:#fff;opacity:0;transform:translateY(130%);transition:all 0.6s ease-in-out}
+#footer .toTop i {display:block;;width:18px;height:22px;text-indent:-9999px;background:url('/img/visits/common_2020/footer_top.png') 0 0 no-repeat;background-size:cover}
+#footer .toTop.active {opacity:1;transform:translateY(0)}
