@@ -4,7 +4,8 @@ $(function(){ // DOCUMENT READY...
 */(function(){
 
 
-
+    // SVG Import
+    $('img[src*=".svg"]').makeSvg();
 
 
 })();/*
@@ -48,6 +49,76 @@ $(function(){ // DOCUMENT READY...
 
         lastScrollTop = st;
     }
+
+
+
+})();/*
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+*/(function(){
+
+
+
+    /* HEADER - GNB */
+    var $wrap = $('#header');
+    var $gnb = $('#header').find('#gnb')
+    var headerH = $wrap.height() * -1;
+
+    // section 이동
+    $gnb.find('.link_gnb').on('click', function(){
+        var target = $(this).attr('data-target')||$(this).attr('data-anchor');
+        var focus = $(this).attr('data-focus');
+
+        moveTo({
+            speed : 400,
+            top : headerH - 1,
+            target : target,
+            focus : focus,
+            afterAction : function(){
+                if($wrap.hasClass('down') && target !== '#wrap'){
+                    setTimeout(function(){
+                        $wrap.removeClass('down');
+                        $wrap.addClass('up');
+                    }, 200);
+                }
+            }
+        });
+    });
+
+    //현재위치표시
+    var $section = $('#container > section');
+
+    $section.each(function() {
+        var $this = $(this);
+
+        scrollAction({
+            target: $this,
+            top: 0,
+            scrollDownAction : function(){
+                // 스크롤 DOWN 액션
+                var id = $this.attr('id');
+                var width = $gnb.find('.link_gnb[data-target="#'+id+'"] span').width();
+                var left = $gnb.find('.link_gnb[data-target="#'+id+'"] span').position().left;
+
+                $gnb.find('.bar').attr('style','width:'+width+'px;transform:translateX('+left+'px)');
+                $gnb.find('.link_gnb').removeClass('on');
+                $gnb.find('.link_gnb[data-target="#'+id+'"]').addClass('on')
+            },
+            scrollUpAction : function(){
+                // 스크롤 UP 액션
+                var $prev = $this.prev();
+                var id = $prev.attr('id');
+
+                if($prev.length){
+                    var width = $gnb.find('.link_gnb[data-target="#'+id+'"] span').width();
+                    var left = $gnb.find('.link_gnb[data-target="#'+id+'"] span').position().left;
+
+                    $gnb.find('.bar').attr('style','width:'+width+'px;transform:translateX('+left+'px)');
+                    $gnb.find('.link_gnb').removeClass('on');
+                    $gnb.find('.link_gnb[data-target="#'+id+'"]').addClass('on')
+                }
+            }
+        });
+    });
 
 
 
@@ -185,6 +256,38 @@ $(function(){ // DOCUMENT READY...
 
 
 
+    /* 전문가 네트워크 */
+    var $wrap = $('#secNetwork');
+
+    // line 리셋
+    TweenMax.set($wrap.find('.bg .line'), {strokeDasharray:2000, strokeDashoffset:2000})
+
+    scrollAction({
+        target: $wrap,
+        top: 40,
+        scrollDownAction : function(){
+            // 스크롤 DOWN 액션
+            $wrap.addClass('active');
+
+            if($wrap.hasClass('active')){
+                TweenMax.to($wrap.find('.bg .line'), 2, {strokeDasharray:3460, strokeDashoffset:1730, delay:0.5, ease:Linear.easeNone})
+                TweenMax.staggerTo($wrap.find('.bg span'), 0.5, {opacity:1, delay:0.5}, 0.5)
+                TweenMax.staggerTo($wrap.find('.item_network'), 2, {backgroundColor:'rgba(0,0,0,0.7)', delay:2.5, className:'item_network on'}, 0.5)
+            }
+        },
+        scrollUpAction : function(){
+            // 스크롤 UP 액션
+        }
+    });
+
+
+
+})();/*
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+*/(function(){
+
+
+
     /* 수상내역 */
     var $wrap = $('#secAward');
     var Y;
@@ -207,7 +310,7 @@ $(function(){ // DOCUMENT READY...
             }
         }, true);
     }
-    
+
     function afterSlideAction (el){
         var $this = el;
         var _index = Number($this.attr('data-swiper-slide-index'));
@@ -216,7 +319,7 @@ $(function(){ // DOCUMENT READY...
 
         var $year = $this.find('.year');
         var y = $year.attr('data-year');
-        
+
         if(Y!=y){
             Y=y;
             $year.find('i').text(0)
@@ -258,7 +361,7 @@ $(function(){ // DOCUMENT READY...
 
 
     var $pagination = $wrap.find('.swiper-pagination');
-                
+
     $pagination.append('<div class="bar"></div>')
 
 })();/*
@@ -323,7 +426,7 @@ $(function(){ // DOCUMENT READY...
             });
             resizingTextarea('textarea');
             $wrap.find('textarea').trigger('keyup');
-            
+
             if(cookie.region){
                 var region = cookie.region;
                 $('#freeConsult select.local').val(region);
@@ -347,7 +450,7 @@ $(function(){ // DOCUMENT READY...
             $wrap.find('.formMemo').prepend('<p class="labelName">문의사항</p>');
         },
         afterSend : function(){
-            
+
             cookie.set('region', $wrap.find('.formLocal select').val());
             cookie.set('consult_memo', $wrap.find('textarea').val());
             setTimeout(function(){
@@ -374,6 +477,31 @@ $(function(){ // DOCUMENT READY...
                 });
             },500)
         }
+    });
+
+
+
+})();/*
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+*/(function(){
+
+
+
+    var $wrap = $('#asideContTop');
+    var wrapW = $wrap.width();    
+    TweenMax.set($wrap, {right:wrapW * -1})
+
+    // layer open
+    var $btnOpen = $wrap.find('.btn_open');
+    $btnOpen.on('click', function(){
+        moveTo({
+            speed : 400,
+            top : 0,
+            target : $('#wrap'),
+            afterAction : function(){
+                console.log('a');
+            }
+        });
     });
 
 

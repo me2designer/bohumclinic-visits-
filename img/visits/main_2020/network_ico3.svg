@@ -1,1 +1,9 @@
-<svg id="레이어_1" data-name="레이어 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.7 73.99"><defs><style>.cls-1{fill:none;}</style></defs><polyline class="cls-1" points="35.72 7.4 67.7 7.4 67.7 50.04 0 50.04 0 7.4 32.25 7.4 32.25 0"/><line class="cls-1" y1="53.98" x2="67.7" y2="53.98"/><line class="cls-1" x1="33.85" y1="53.98" x2="33.85" y2="70.02"/><line class="cls-1" x1="20.17" y1="53.98" x2="10.22" y2="73.99"/><line class="cls-1" x1="47.53" y1="53.98" x2="57.48" y2="73.99"/><path class="cls-1" d="M16.17,18.8s12.33,20,35.91,19.65l-5.34-4.39L45,42.46l6-2.22" transform="translate(-1)"/><path id="color" class="cls-1" d="M17.59,38.46s12.33-20,35.92-19.66l-7.82-4.18,1.92,9.49,4.47-3.58" transform="translate(-1)"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.7 73.99">
+    <polyline style="fill:none" points="35.72 7.4 67.7 7.4 67.7 50.04 0 50.04 0 7.4 32.25 7.4 32.25 0"/>
+    <line style="fill:none" y1="53.98" x2="67.7" y2="53.98"/>
+    <line style="fill:none" x1="33.85" y1="53.98" x2="33.85" y2="70.02"/>
+    <line style="fill:none" x1="20.17" y1="53.98" x2="10.22" y2="73.99"/>
+    <line style="fill:none" x1="47.53" y1="53.98" x2="57.48" y2="73.99"/>
+    <path style="fill:none" d="M16.17,18.8s12.33,20,35.91,19.65l-5.34-4.39L45,42.46l6-2.22" transform="translate(-1)"/>
+    <path id="color" style="fill:none" d="M17.59,38.46s12.33-20,35.92-19.66l-7.82-4.18,1.92,9.49,4.47-3.58" transform="translate(-1)"/>
+</svg>

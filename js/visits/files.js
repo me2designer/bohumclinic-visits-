@@ -8,13 +8,14 @@ var fileList = [
     SERVER.public+'/css/reset.css',
     SERVER.public+'/css/common_pc.css',
     '/css/visits/common_2020.css',
-    
-    SERVER.public+'/lib/swiper/swiper.js',
+    '/lib/gsap/TweenMax.min.js',
+    SERVER.public+'/lib/swiper/swiper.js',    
     SERVER.public+'/js/modules.js',
     SERVER.public+'/js/public.js',
     SERVER.common+'/js/common.js',
     SERVER.public+'/js/analysis.js',
     '/js/visits/common_2020.js',
+
 ]
 
 if(location.pathname==''||location.pathname=='/') {
