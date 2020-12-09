@@ -810,45 +810,62 @@ $(function(){ // DOCUMENT READY...
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 */(function(){
 
+    
+    
+    /* 결과페이지 sample */ 
+
+    // 파리미터
+    var data = getQuery();
+
+    function getQuery(){
+        var url = document.location.href;
+        var qs = url.substring(url.indexOf('?') + 1).split('&');        
+            data = decodeURIComponent(qs);
+        return data;
+    };
+
 
     
-    LAYER({
-        name : 'visitsMainConsultComp',
-        afterLoad : function(){
-            var $wrap = $('#visitsMainConsultComp');
-            var $btnClose = $wrap.parent().next('.close');
+    // layer
+    if(data == 'complete'){
+        LAYER({
+            name : 'visitsMainConsultComp',
+            afterLoad : function(){
+                var $wrap = $('#visitsMainConsultComp');
+                var $btnClose = $wrap.parent().next('.close');
 
-            $btnClose.attr('data-public-path','/img/common/btnClose01.png');
-            $btnClose.on('click', function(){
-                $('.layer_wrap').off('scroll touchmove mousewheel'); 
-            });
+                $btnClose.attr('data-public-path','/img/common/btnClose01.png');
+                $btnClose.on('click', function(){
+                    $('.layer_wrap').off('scroll touchmove mousewheel'); 
+                });
 
-            $('.layer_wrap').on('scroll touchmove mousewheel', function(e){
-                e.preventDefault();
-                e.stopPropagation(); 
-                return false;
-            });
+                $('.layer_wrap').on('scroll touchmove mousewheel', function(e){
+                    e.preventDefault();
+                    e.stopPropagation(); 
+                    return false;
+                });
 
-            // SVG Import
-            $('img[src*=".svg"]').makeSvg();
+                // SVG Import
+                $('img[src*=".svg"]').makeSvg();
 
-            
-            var itemCss = {borderColor:'#f6d039', color:'#000', backgroundColor:'#f6d039'}
-            var setTimeStep =  new TimelineMax({repeatDelay:1, repeat:-1})
-    
-            setTimeStep.to($wrap.find('.item_step:eq(0)'), 0.5, itemCss)
-                        .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-1550'})
-                        .to($wrap.find('.item_step:eq(1)'), 0.5, itemCss)
-                        .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-1810'})
-                        .to($wrap.find('.item_step:eq(2)'), 0.5, itemCss)
-                        .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-2180'})
-                        .to($wrap.find('.item_step:eq(3)'), 0.5, itemCss)
-                        .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-2410'})
-                        .to($wrap.find('.item_step:eq(4)'), 0.5, itemCss)
-                        .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-2640', strokeDasharray:'1220, 1300'})
-                        .to($wrap.find('.item_step:eq(5)'), 0.5, itemCss)
-        },
-    });
+                
+                var itemCss = {borderColor:'#f6d039', color:'#000', backgroundColor:'#f6d039'}
+                var setTimeStep =  new TimelineMax({repeatDelay:1, repeat:-1})
+        
+                setTimeStep.to($wrap.find('.item_step:eq(0)'), 0.5, itemCss)
+                            .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-1550'})
+                            .to($wrap.find('.item_step:eq(1)'), 0.5, itemCss)
+                            .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-1810'})
+                            .to($wrap.find('.item_step:eq(2)'), 0.5, itemCss)
+                            .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-2180'})
+                            .to($wrap.find('.item_step:eq(3)'), 0.5, itemCss)
+                            .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-2410'})
+                            .to($wrap.find('.item_step:eq(4)'), 0.5, itemCss)
+                            .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-2640', strokeDasharray:'1220, 1300'})
+                            .to($wrap.find('.item_step:eq(5)'), 0.5, itemCss)
+            },
+        });
+    }
 
 
 

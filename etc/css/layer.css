@@ -9,7 +9,7 @@
 
 /* 방문(visits) - 메인 - 상담신청 - 결과페이지 */
 #visitsMainConsultComp_wrap {font-family:'NanumBarunGothic',sans-serif}
-#visitsMainConsultComp_wrap > .close {margin: -380px -339px 0 0;}
+#visitsMainConsultComp_wrap > .close {width:40px;height:40px;margin:-380px -339px 0 0}
 #visitsMainConsultComp {position:relative;width:710px;height:790px;padding:226px 42px 42px;background:#467ed8 url('/etc/img/visits_main_consult_comp_bg.jpg') 0 0 no-repeat;background-size:cover}
 #visitsMainConsultComp .tit_layer {position:absolute;top:78px;left:50px;font-size:30px;color:#fff;letter-spacing:-0.03em}
 #visitsMainConsultComp .tit_layer::after {content:'';position:absolute;top:-32px;left:0;width:340px;height:130px;background:url('/etc/img/visits_main_consult_comp_tit_bg.png') 0 0 no-repeat}
