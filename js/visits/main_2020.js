@@ -60,7 +60,7 @@ $(function(){ // DOCUMENT READY...
 
     /* HEADER - GNB */
     var $wrap = $('#header');
-    var $gnb = $('#header').find('#gnb')
+    var $gnb = $('#header').find('#gnb');
     var headerH = $wrap.height() * -1;
 
     // section 이동
@@ -70,11 +70,11 @@ $(function(){ // DOCUMENT READY...
 
         moveTo({
             speed : 400,
-            top : headerH - 1,
+            top : headerH,
             target : target,
             focus : focus,
             afterAction : function(){
-                if($wrap.hasClass('down') && target !== '#wrap'){
+                if($wrap.hasClass('down') && target !== '#secVisual'){
                     setTimeout(function(){
                         $wrap.removeClass('down');
                         $wrap.addClass('up');
@@ -92,7 +92,7 @@ $(function(){ // DOCUMENT READY...
 
         scrollAction({
             target: $this,
-            top: 0,
+            top: 10,
             scrollDownAction : function(){
                 // 스크롤 DOWN 액션
                 var id = $this.attr('id');
@@ -102,6 +102,9 @@ $(function(){ // DOCUMENT READY...
                 $gnb.find('.bar').attr('style','width:'+width+'px;transform:translateX('+left+'px)');
                 $gnb.find('.link_gnb').removeClass('on');
                 $gnb.find('.link_gnb[data-target="#'+id+'"]').addClass('on')
+
+                // #wrap에 현재 Section명 추가
+                $('#wrap').attr('data-section-name',id);
             },
             scrollUpAction : function(){
                 // 스크롤 UP 액션
@@ -115,6 +118,9 @@ $(function(){ // DOCUMENT READY...
                     $gnb.find('.bar').attr('style','width:'+width+'px;transform:translateX('+left+'px)');
                     $gnb.find('.link_gnb').removeClass('on');
                     $gnb.find('.link_gnb[data-target="#'+id+'"]').addClass('on')
+
+                    // #wrap에 현재 Section명 추가
+                    $('#wrap').attr('data-section-name',id);
                 }
             }
         });
@@ -359,10 +365,10 @@ $(function(){ // DOCUMENT READY...
         },
     });
 
-
     var $pagination = $wrap.find('.swiper-pagination');
-
     $pagination.append('<div class="bar"></div>')
+
+
 
 })();/*
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -450,7 +456,6 @@ $(function(){ // DOCUMENT READY...
             $wrap.find('.formMemo').prepend('<p class="labelName">문의사항</p>');
         },
         afterSend : function(){
-
             cookie.set('region', $wrap.find('.formLocal select').val());
             cookie.set('consult_memo', $wrap.find('textarea').val());
             setTimeout(function(){
@@ -487,21 +492,362 @@ $(function(){ // DOCUMENT READY...
 
 
 
-    var $wrap = $('#asideContTop');
-    var wrapW = $wrap.width();    
-    TweenMax.set($wrap, {right:wrapW * -1})
+    var $wrap = $('#asideCont');
+    var $visual = $('#secVisual');
+    var $service = $('#secService');
+    var $freeConsult = $('#freeConsult');
+    var $asideFooter = $('#asideFooter');
+    var $btnOpen = $wrap.find('.btn_open');
+    var wrapW = $wrap.width();
 
     // layer open
-    var $btnOpen = $wrap.find('.btn_open');
     $btnOpen.on('click', function(){
-        moveTo({
-            speed : 400,
-            top : 0,
-            target : $('#wrap'),
-            afterAction : function(){
-                console.log('a');
+        if (!$wrap.hasClass('active')){
+            $wrap.addClass('active noTouch');
+            $asideFooter.removeClass('active');
+            TweenMax.to($wrap, 0.4, {ease: Power1.easeIn, right:0, onComplete:function(){
+                $wrap.removeClass('noTouch');
+            }});
+
+            if ($wrap.hasClass('btnChange')){
+                $btnCont.click();
+            } else {
+                $btnStep.click();
             }
-        });
+        } else {
+            $wrap.removeClass('active noTouch');
+            TweenMax.to($wrap, 1, {ease: Power4.easeOut, right:wrapW * -1, onComplete:function(){
+                $wrap.removeClass('noTouch');
+            }});
+
+            if ($wrap.hasClass('btnChange')){
+                $asideFooter.addClass('active');
+            }
+        };
+    });
+
+    // #secVisual offset().top '0'인 경우 자동으로 layer open
+    var winT = $(window).scrollTop();
+    var tmAutoStart = TweenMax.delayedCall(0.5, function(){
+        if (!$wrap.hasClass('active')){
+            $btnOpen.click();
+        }
+    });
+
+    scrollAction({
+        target: $visual,
+        top: 0,
+        scrollDownAction : function(){
+            if (winT >= 10){
+                tmAutoStart.kill();
+            }
+        },
+        scrollUpAction : function(){
+            // 스크롤 UP 액션
+            tmAutoStart.restart(true);
+        },
+    });
+
+    // #secService 인접 시 Layer Close
+    scrollAction({
+        target: $service,
+        top: 30,
+        scrollDownAction : function(){
+            // 스크롤 DOWN 액션
+            $wrap.addClass('btnChange');
+
+            if ($wrap.hasClass('active')){
+                $btnOpen.click();                
+            } else {
+                $asideFooter.addClass('active');
+            }
+        },
+        scrollUpAction : function(){
+            // 스크롤 UP 액션
+            $wrap.removeClass('btnChange');
+            $asideFooter.removeClass('active');
+
+            if ($wrap.hasClass('active')){
+                $btnCont.click();                
+            }
+        },
+    });
+
+    // #freeConsult 인접 시 Layer Close
+    var tmBtnOpacity;
+
+    scrollAction({
+        target: $freeConsult,
+        top: 30,
+        scrollDownAction : function(){
+            // 스크롤 DOWN 액션
+            if ($wrap.hasClass('active')){
+                $btnOpen.click();
+                $wrap.addClass('noTouch');
+                tmBtnOpacity = TweenMax.to($wrap, 0.3, {opacity:0, delay:1})
+                $asideFooter.removeClass('active');
+            } else {
+                $wrap.addClass('noTouch');
+                tmBtnOpacity = TweenMax.to($wrap, 0.3, {opacity:0})
+                $asideFooter.removeClass('active');
+            }
+        },
+        scrollUpAction : function(){
+            // 스크롤 UP 액션
+            $asideFooter.addClass('active');
+
+            tmBtnOpacity.kill()
+            TweenMax.set($wrap, {right:wrapW * -1, onComplete:function(){
+                $wrap.removeClass('active');
+            }});
+            TweenMax.to($wrap, 0.3, {opacity:1, onComplete:function(){
+                $wrap.removeClass('noTouch');
+            }});
+        },
+    });
+
+    // swiper
+    var swiper = new Swiper($wrap.find('.swiper-container'), {
+        simulateTouch: false, // drag 전환 방지
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+        on : {
+            init: function(){
+            $wrap.attr('data-slide',this.realIndex);
+            },
+            slideChangeTransitionStart : function(){
+                $wrap.attr('data-slide',this.realIndex);
+            },
+        },
+    });
+
+    // swiper - .swiper-slide 전환
+    var $step =  $wrap.find('.step');
+    var $progress = $wrap.find('.progress');
+    var $btnStep = $progress.find('.btn_step');
+    var $btnCont = $progress.find('.btn_cont');
+    var setTimeStep, setTimeCont;
+    var stepPlay = false, contPlay = false;
+
+    var stepFnc = function(){
+        var itemCss = {borderColor:'#f6d039', color:'#000', backgroundColor:'#f6d039'}
+        setTimeStep =  new TimelineMax({delay:0.5,onUpdate:updateStats, onComplete:function(){
+            stepPlay = true;
+
+            if (!$wrap.hasClass('active')) {
+                    setTimeStep.kill();
+                    return;
+                }
+
+            $btnCont.click();
+        }});
+
+        setTimeStep.to($step.find('.item_step:eq(0)'), 1, itemCss)
+                   .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-1550'})
+                   .to($step.find('.item_step:eq(1)'), 1, itemCss)
+                   .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-1810'})
+                   .to($step.find('.item_step:eq(2)'), 1, itemCss)
+                   .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-2180'})
+                   .to($step.find('.item_step:eq(3)'), 1, itemCss)
+                   .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-2410'})
+                   .to($step.find('.item_step:eq(4)'), 1, itemCss)
+                   .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-2640', strokeDasharray:'1220, 1300'})
+                   .to($step.find('.item_step:eq(5)'), 1, itemCss)
+                   .to($step, 0, {delay:1})
+
+        function updateStats() {
+            var timer = setTimeStep.totalProgress().toFixed(3); //소수점 3자리
+
+            $progress.find('.progress_fill').css('width', (timer * 100) + '%');
+        }
+    }
+
+    var contFnc = function(){
+        setTimeCont = TweenMax.to($wrap, 6, {onUpdate:updateStats, onComplete:function(){
+            contPlay = true;
+
+            if (!$wrap.hasClass('active') || $wrap.hasClass('btnChange')) {
+                setTimeCont.kill();
+                return;
+            }
+
+            $btnStep.click();
+        }});
+
+        function updateStats() {
+            var timer = setTimeCont.totalProgress().toFixed(3); //소수점 3자리
+
+            $progress.find('.progress_fill').css('width', (timer * 100) + '%');
+        }
+    }
+
+    $btnStep.on('click', function(){
+        if (stepPlay) setTimeStep.kill();
+        if (contPlay) setTimeCont.kill();
+
+        TweenMax.set($step.find('.bg.fst'), {strokeDasharray:'1100, 1300', strokeDashoffset:'-1350'});
+        TweenMax.set($step.find('.item_step'), {borderColor:'#fff', color:'#fff', backgroundColor:'#457dd8'});
+        swiper.slideTo($wrap.find('.swiper-slide:eq(0)').index(), 0, true);
+        stepFnc();
+    });
+
+    $btnCont.on('click', function(){
+        if (stepPlay) setTimeStep.kill();
+        if (contPlay) setTimeCont.kill();
+
+        swiper.slideTo($wrap.find('.swiper-slide:eq(1)').index(), 0, true);
+        contFnc();
+    });
+
+    // 입력폼 선택시 swiper 정지
+    $wrap.find('.swiper-slide').on('click', function(){
+        if ($wrap.attr('data-slide') !== '1') return;
+        setTimeStep.kill();
+        setTimeCont.kill();
+    });
+
+    // 입력폼
+    $wrap.find('.formMemo textarea').html('상담가능일시 : \r\n내용 :');
+
+    var $local = $wrap.find('.formLocal').detach();
+    var $memo = $wrap.find('.formMemo').detach();
+    $wrap.find('.loadForm').importForm({
+        inBoundsUrl : (SERVER.name!='local'?SERVER.bohumClinic:'')+'/api/fa/inbound',
+        name : 'form_01',
+        formSet : {
+            'data-action' : false,
+            'data-check' : false,
+            'data-calc' : false,
+            'data-focus-action' : false,
+            'data-auto-focus' : true
+        },
+        addData: function(){
+            var data = {};
+            data.region = $wrap.find('.formLocal select').val();
+            data.requestMemo = $wrap.find('.formMemo textarea').val();
+            storeRegion = data.region;
+            return data;
+        },
+        afterLoad : function(){
+            $wrap.find('.formBox').prepend($local);
+            $wrap.find('.formPassed').after($memo);
+            var $submit = $wrap.find('.submit');
+            var $submit_clone = $submit.clone();
+            $submit.addClass('hidden').after($submit_clone);
+            $submit_clone.on('click', function(){
+
+                getUser($wrap.find('form'));
+                if($wrap.find('.formLocal select').val()){
+                    $submit.trigger('click');
+                } else {
+                    alert('지역을 선택하세요');
+                }
+            });
+            resizingTextarea('textarea');
+            $wrap.find('textarea').trigger('keyup');
+
+            if(cookie.region){
+                var region = cookie.region;
+                $('#freeConsult select.local').val(region);
+            } else {
+                // if(myCity&&$('#freeConsult select.local').find('[value='+myCity+']').length){
+                //     $('#freeConsult select.local').val(myCity);
+                // };
+            }
+
+            if(cookie.consult_memo){
+                var memo = cookie.consult_memo;
+                $wrap.find('textarea').val(memo);
+                $wrap.find('textarea').trigger('keyup');
+            }
+
+            // label 추가
+            $wrap.find('.formLocal').prepend('<p class="labelName">지역<span>*</span></p>');
+            $wrap.find('.formName').prepend('<p class="labelName">이름<span>*</span></p>');
+            $wrap.find('.formBirth').prepend('<p class="labelName">생년월일<span>*</span></p>');
+            $wrap.find('.formPhone').prepend('<p class="labelName">연락처<span>*</span></p>');
+            $wrap.find('.formMemo').prepend('<p class="labelName">문의사항</p>');
+        },
+        afterSend : function(){
+            cookie.set('region', $wrap.find('.formLocal select').val());
+            cookie.set('consult_memo', $wrap.find('textarea').val());
+            setTimeout(function(){
+
+                var gtag_label = '';
+                if(params.pid) gtag_label+=('&pid='+params.pid);
+                if(params.aid) gtag_label+=('&aid='+params.aid);
+                if(gtag) {
+                    gtag('event', '상담', {
+                        'send_to': adList.googleAds,
+                        'event_category': '추적',
+                        'event_label': gtag_label
+                    });
+                    gtag('event', '상담', {
+                        'send_to': adList.googleAnalytics,
+                        'event_category': '추적',
+                        'event_label': gtag_label
+                    });
+                    cookie.set('gtag_submit', 1);
+                }
+
+                LAYER({
+                    name : 'mainConsultComp',
+                });
+            },500)
+        }
+    });
+
+    // floating footer
+    $asideFooter.on('click', function(){
+        if (!$wrap.hasClass('active')){
+            $btnOpen.click();
+        }
+    });
+
+
+
+})();/*
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+*/(function(){
+
+
+    
+    LAYER({
+        name : 'visitsMainConsultComp',
+        afterLoad : function(){
+            var $wrap = $('#visitsMainConsultComp');
+            var $btnClose = $wrap.parent().next('.close');
+
+            $btnClose.attr('data-public-path','/img/common/btnClose01.png');
+            $btnClose.on('click', function(){
+                $('.layer_wrap').off('scroll touchmove mousewheel'); 
+            });
+
+            $('.layer_wrap').on('scroll touchmove mousewheel', function(e){
+                e.preventDefault();
+                e.stopPropagation(); 
+                return false;
+            });
+
+            // SVG Import
+            $('img[src*=".svg"]').makeSvg();
+
+            
+            var itemCss = {borderColor:'#f6d039', color:'#000', backgroundColor:'#f6d039'}
+            var setTimeStep =  new TimelineMax({repeatDelay:1, repeat:-1})
+    
+            setTimeStep.to($wrap.find('.item_step:eq(0)'), 0.5, itemCss)
+                        .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-1550'})
+                        .to($wrap.find('.item_step:eq(1)'), 0.5, itemCss)
+                        .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-1810'})
+                        .to($wrap.find('.item_step:eq(2)'), 0.5, itemCss)
+                        .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-2180'})
+                        .to($wrap.find('.item_step:eq(3)'), 0.5, itemCss)
+                        .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-2410'})
+                        .to($wrap.find('.item_step:eq(4)'), 0.5, itemCss)
+                        .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-2640', strokeDasharray:'1220, 1300'})
+                        .to($wrap.find('.item_step:eq(5)'), 0.5, itemCss)
+        },
     });
 
 

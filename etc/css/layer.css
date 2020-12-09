@@ -1,0 +1,53 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+/*
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+*/
+
+
+/* 방문(visits) - 메인 - 상담신청 - 결과페이지 */
+#visitsMainConsultComp_wrap {font-family:'NanumBarunGothic',sans-serif}
+#visitsMainConsultComp_wrap > .close {margin: -380px -339px 0 0;}
+#visitsMainConsultComp {position:relative;width:710px;height:790px;padding:226px 42px 42px;background:#467ed8 url('/etc/img/visits_main_consult_comp_bg.jpg') 0 0 no-repeat;background-size:cover}
+#visitsMainConsultComp .tit_layer {position:absolute;top:78px;left:50px;font-size:30px;color:#fff;letter-spacing:-0.03em}
+#visitsMainConsultComp .tit_layer::after {content:'';position:absolute;top:-32px;left:0;width:340px;height:130px;background:url('/etc/img/visits_main_consult_comp_tit_bg.png') 0 0 no-repeat}
+#visitsMainConsultComp .list_profile {margin-bottom:30px;padding:23px 30px;border:1px solid #d1d1d1;border-radius:4px;background-color:#fff;}
+#visitsMainConsultComp .list_profile::after {content:'';display:block;visibility:hidden;height:0;font-size:0;clear:both}
+#visitsMainConsultComp .list_profile li {float:left;width:50%;margin-bottom:15px}
+#visitsMainConsultComp .list_profile li:nth-child(n+7) {margin-bottom:0}
+#visitsMainConsultComp .list_profile li:nth-child(odd) {clear:left}
+#visitsMainConsultComp .list_profile span {position:relative;display:inline-block;min-width:57px;margin-right:15px;font-weight:bold;color:#3978cb;text-align:justify;text-align-last:justify}
+#visitsMainConsultComp .list_profile span::after {content:':';position:absolute;top:50%;right:-10px;transform:translateY(-50%)}
+#visitsMainConsultComp .list_profile em {font-weight:bold}
+
+/* 방문(visits) - 메인 - 상담신청 - 결과페이지 - 상담신청 후 진행절차 */
+#visitsMainConsultComp .step {}
+#visitsMainConsultComp .tit_step {display:block;padding-bottom:25px;font-size:20px;color:#fff}
+#visitsMainConsultComp .box_step {position:relative}
+#visitsMainConsultComp .box_step .bg {position:absolute;left:22px;top:0;width:597px;height:172px;stroke:#f4f5fb;stroke-width:16px;stroke-linecap:round;stroke-linejoin:round}
+#visitsMainConsultComp .box_step .bg.fst {z-index:1;stroke:#f6d039;stroke-width:17px;stroke-dasharray:1100, 1300;stroke-dashoffset:-1350}
+#visitsMainConsultComp .list_step {position:relative;z-index:2;height:172px;margin:58px 0 42px}
+#visitsMainConsultComp .list_step .item_step {display:flex;justify-content:center;align-items:center;position:absolute;width:106px;height:106px;border:2px solid #fff;border-radius:100%;color:#fff;background-color:#457dd8}
+#visitsMainConsultComp .list_step .item_step::before {content:'1';position:absolute;top:-17px;left:-17px;font-family:'KoPubWorldBatang',serif;font-style:italic;font-size:26px;font-weight:bold;color:#fff}
+#visitsMainConsultComp .list_step .item_step:nth-child(1) {top:-48px;left:20px}
+#visitsMainConsultComp .list_step .item_step:nth-child(2) {top:-48px;left:230px}
+#visitsMainConsultComp .list_step .item_step:nth-child(3) {top:-48px;left:440px}
+#visitsMainConsultComp .list_step .item_step:nth-child(4) {top:106px;left:490px}
+#visitsMainConsultComp .list_step .item_step:nth-child(5) {top:106px;left:282px}
+#visitsMainConsultComp .list_step .item_step:nth-child(6) {top:106px;left:80px}
+#visitsMainConsultComp .list_step .item_step:nth-child(2)::before {content:'2'}
+#visitsMainConsultComp .list_step .item_step:nth-child(3)::before {content:'3'}
+#visitsMainConsultComp .list_step .item_step:nth-child(4)::before {content:'4'}
+#visitsMainConsultComp .list_step .item_step:nth-child(5)::before {content:'5'}
+#visitsMainConsultComp .list_step .item_step:nth-child(6)::before {content:'6'}
+#visitsMainConsultComp .list_step .item_step:nth-child(n+4)::before {left:auto;right:103px}
+#visitsMainConsultComp .list_step .item_step span {font-size:16px;text-align:center;line-height:1.2em}
+#visitsMainConsultComp .step .bg.fst {animation:layerStepLine 8s 1s forwards}
+
+
+
+/*
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+*/

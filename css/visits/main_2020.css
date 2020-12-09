@@ -13,7 +13,7 @@
 #header {position:fixed;top:0;left:0;right:0;min-width:1600px;height:90px;background-color:#fff;transition:top 0.4s ease-in-out}
 #header .logo {position:absolute;top:20px;left:90px;width:92px}
 #header .logo .svg {width:auto;height:50px}
-#header.up {top:-90px;transition:top 1s ease-in-out}
+#header.up {top:-90px;transition:top 1s 2s ease-in-out}
 
 /* HEADER - GNB */
 #gnb {width:1096px;margin:0 auto}
@@ -27,11 +27,110 @@
 /****************************************************************************
 	layer
 ****************************************************************************/
-/* 상담신청 TOP */
-#asideContTop {position:fixed;top:0;right:0;z-index:31;width:882px;height:100%;background-color:#457dd8}
-#asideContTop .btn_open {position:absolute;top:100px;left:-142px;z-index:1;width:142px;height:142px;color:#fff;background-color:#457dd8}
-#asideContTop .btn_open::after {content:'상담신청';display:block;}
-#asideContTop .btn_open .ico_cross {width:26px;height:26px;fill:#fff}
+/* 상담신청 side */
+#asideCont {position:fixed;top:0;right:-882px;z-index:32;width:882px;height:100%;padding-top:115px;background-color:#457dd8}
+#asideCont .btn_open {position:absolute;top:50%;left:-142px;z-index:1;width:142px;height:142px;color:#fff;background-color:#457dd8;transform:translate(0,-50%)}
+#asideCont .btn_open::before {content:'';position:absolute;top:50%;left:50%;width:119px;height:119px;margin:-59px 0 0 -59px;background:url('/img/visits/main_2020/aside_cont_btn_txt.png');opacity:0;transition:opacity 0.3s;animation:asideContBtnTxt 10s infinite linear}
+#asideCont .btn_open::after {content:'상담신청';display:block;font-size:16px;transition:opacity 0.3s}
+#asideCont .btn_open .ico_cross {width:26px;height:26px;fill:#fff;transition:transform 0.6s 0.5s ease-in-out, opacity 0.3s}
+#asideCont .btn_open .ico_bi {position:absolute;top:50%;left:50%;width:30px;height:30px;transform:translate(-50%, -50%);opacity:0;transition:opacity 0.3s}
+[data-device="pc"] .btn_open {transition:all 0.4s ease-in-out}
+#asideCont.btnChange .btn_open {border-radius:100%;background-color:#db6f19;transform:translate(-30px,-50%)}
+#asideCont.btnChange .btn_open::before {opacity:1}
+#asideCont.btnChange .btn_open::after {opacity:0}
+#asideCont.btnChange .btn_open .ico_cross {opacity:0}
+#asideCont.btnChange .btn_open .ico_bi {opacity:1}
+#asideCont.active .btn_open {width:92px;height:92px;border-radius:0;background-color:#fff;transform:translate(80px,-50%)}
+#asideCont.active .btn_open::before {opacity:0}
+#asideCont.active .btn_open::after {content:'CLOSE';font-size:14px;color:#457dd8;opacity:1}
+#asideCont.active .btn_open .ico_cross {fill:#457dd8;transform:rotate(45deg);opacity:1}
+#asideCont.active .btn_open .ico_bi {opacity:0}
+@keyframes asideContBtnTxt {
+    100%        {transform:rotate(360deg)}
+}
+
+/* 상담신청 side - swiper */
+#asideCont .swiper-container {overflow:visible;width:730px;margin:0 auto}
+#asideCont .progress {float:right;clear:both;position:relative;width:420px;margin:0 60px 45px 0;transition:opacity 1s}
+#asideCont .progress::after {content:'';display:block;visibility:hidden;height:0;font-size:0;clear:both}
+#asideCont .progress button {font-size:16px;font-weight:bold;}
+#asideCont .progress .progress_bar {position:absolute;top:10px;width:200px;height:2px;background-color:#bcd6ff}
+#asideCont .progress .progress_fill {position:absolute;top:0;bottom:0;left:0;background-color:#f6d039}
+#asideCont[data-slide="0"] .btn_step {float:left;color:#f6d039}
+#asideCont[data-slide="1"] .btn_step {float:right;color:#bcd6ff}
+#asideCont[data-slide="0"] .btn_cont {float:right;color:#bcd6ff}
+#asideCont[data-slide="1"] .btn_cont {float:left;color:#f6d039}
+#asideCont[data-slide="0"] .progress .progress_bar {left:120px}
+#asideCont[data-slide="1"] .progress .progress_bar {left:100px}
+#asideCont.btnChange .progress {opacity:0}
+#asideCont .head {position:relative;padding:0 0 80px 250px}
+#asideCont .head::before {content:'';position:absolute;left:-29px;bottom:-11px;z-index:1;width:327px;height:343px;background:0 0 no-repeat}
+#asideCont .head::after {content:'';position:absolute;left:0;bottom:0;width:100%;height:2px;background-color:#fff;}
+#asideCont[data-slide="0"] .head .txt1 {margin-bottom:10px;font-size:28px;font-weight:bold;color:#fff;line-height:1em}
+#asideCont[data-slide="0"] .head .txt2 {margin-bottom:10px;font-size:32px;font-weight:100;color:#c9edfe;line-height:1em}
+#asideCont[data-slide="0"] .head .txt3 {margin-bottom:40px;font-size:52px;font-weight:bold;line-height:1em;color:#f6d039}
+#asideCont[data-slide="0"] .head .txt4 {font-size:18px;color:#d3ddf4}
+#asideCont[data-slide="1"] .head .txt1 {margin-bottom:25px;font-size:30px;font-weight:bold;color:#f6d039;line-height:1em}
+#asideCont[data-slide="1"] .head .txt2 {font-size:32px;font-weight:100;color:#c9edfe;line-height:1.3em}
+#asideCont[data-slide="0"] .head::before {background-image:url('/img/visits/main_2020/aside_cont_head_model1.png')}
+#asideCont[data-slide="1"] .head::before {background-image:url('/img/visits/main_2020/aside_cont_head_model2.png')}
+
+/* 상담신청 side - swiper - 상담신청 후 진행절차 */
+#asideCont .step {padding:35px 0 0 20px}
+#asideCont .tit_step {display:block;padding-bottom:35px;font-size:24px;color:#fff}
+#asideCont .box_step {position:relative}
+#asideCont .box_step .bg {position:absolute;left:22px;top:0;width:597px;height:172px;stroke:#f4f5fb;stroke-width:16px;stroke-linecap:round;stroke-linejoin:round}
+#asideCont .box_step .bg.fst {z-index:1;stroke:#f6d039;stroke-width:17px;stroke-dasharray:1100, 1300;stroke-dashoffset:-1350}
+#asideCont .list_step {position:relative;z-index:2;height:172px;margin:58px 0 42px}
+#asideCont .list_step .item_step {display:flex;justify-content:center;align-items:center;position:absolute;width:106px;height:106px;border:2px solid #fff;border-radius:100%;color:#fff;background-color:#457dd8}
+#asideCont .list_step .item_step::before {content:'1';position:absolute;top:-17px;left:-17px;font-family:'KoPubWorldBatang',serif;font-style:italic;font-size:26px;font-weight:bold;color:#fff}
+#asideCont .list_step .item_step:nth-child(1) {top:-48px;left:20px}
+#asideCont .list_step .item_step:nth-child(2) {top:-48px;left:230px}
+#asideCont .list_step .item_step:nth-child(3) {top:-48px;left:440px}
+#asideCont .list_step .item_step:nth-child(4) {top:106px;left:490px}
+#asideCont .list_step .item_step:nth-child(5) {top:106px;left:282px}
+#asideCont .list_step .item_step:nth-child(6) {top:106px;left:80px}
+#asideCont .list_step .item_step:nth-child(2)::before {content:'2'}
+#asideCont .list_step .item_step:nth-child(3)::before {content:'3'}
+#asideCont .list_step .item_step:nth-child(4)::before {content:'4'}
+#asideCont .list_step .item_step:nth-child(5)::before {content:'5'}
+#asideCont .list_step .item_step:nth-child(6)::before {content:'6'}
+#asideCont .list_step .item_step:nth-child(n+4)::before {left:auto;right:103px}
+#asideCont .list_step .item_step span {font-size:16px;text-align:center;line-height:1.2em}
+#asideCont .step .bg.fst {animation:layerStepLine 8s 1s forwards}
+
+/* 상담신청 side - swiper - form_01 수정 */
+#asideCont .loadForm {width:501px;margin:0 auto;padding:40px 50px 0 0}
+#asideCont .loadForm::after {content:'';display:block;visibility:hidden;height:0;font-size:0;clear:both}
+#asideCont .loadForm select[name="local"] {padding-left:10px;background-color:#fff}
+#asideCont .import_form {float:right;width:347px}
+#asideCont .formRow label {border:1px solid #d1d1d1;border-radius:3px}
+#asideCont .labelName {position:absolute;top:10px;left:-90px;font-size:16px;font-weight:bold;color:#fff}
+#asideCont .labelName span {padding-left:5px;font-weight:normal;color:#df2a1c}
+#asideCont .formLocal i {position:absolute;top:50%;right:20px;width:16px;height:16px;margin:-8px;background-size:contain;pointer-events:none}
+#asideCont .formName {clear:none;width:calc(60% - 8px)}
+#asideCont .formGender {float:right;clear:none;width:40%}
+#asideCont .formGender label {border:0}
+#asideCont .formGender label :checked~em {color:#000;background-color:#f6d039}
+#asideCont .formGender label:nth-child(1) em {border-width:1px 0 1px 1px;border-color:#d1d1d1;border-radius:3px 0 0 3px}
+#asideCont .formGender label:nth-child(2) em {border-width:1px 1px 1px 0;border-color:#d1d1d1;border-radius:0 3px 3px 0}
+#asideCont .formPhone .select_wrap {width:calc(25% - 8px);margin-right:8px;padding-right:0}
+#asideCont .formPhone .select_wrap i {top:50%;left:auto;right:15px}
+#asideCont .formPhone .select_wrap+label {width:75%}
+#asideCont .formMemo {height:109px;margin-bottom:10px}
+#asideCont .formMemo textarea {width:100%;height:100% !important;padding:15px 0 0 20px;line-height:1.6em;background-color:#fff}
+#asideCont .formAgree {margin-bottom:10px}
+#asideCont .formAgree label {border:0}
+#asideCont .formAgree .agreeText {width:50px;border-radius:2em}
+#asideCont .formAgree .ico_ckeck:nth-child(1) {border:0}
+#asideCont .submit {margin-top:30px;font-weight:bold;color:#000;background-color:#f6d039}
+#asideCont .submit::before {content:'보험클리닉 방문상담신청';}
+
+/* 상담신청 footer */
+#asideFooter {position:fixed;left:0;right:0;bottom:-80px;z-index:31;height:80px;background-color:#db6f19;transition:bottom 0.3s ease-in}
+#asideFooter .btn_cont {position:absolute;left:50%;bottom:-8px;width:770px;height:150px;margin-left:-560px;background:url('/img/visits/main_2020/aside_footer_btn.png') 0 0 no-repeat;opacity:0;transition:opacity 0.3s ease-in}
+#asideFooter.active {bottom:0;transition:bottom 0.4s ease-out}
+#asideFooter.active .btn_cont {opacity:1;transition:bottom 0.4s 0.2s ease-out}
 
 /****************************************************************************
 	content area
