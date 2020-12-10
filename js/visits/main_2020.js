@@ -1,3 +1,5 @@
+
+
 $(function(){ // DOCUMENT READY...
 /*
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -13,55 +15,10 @@ $(function(){ // DOCUMENT READY...
 */(function(){
 
 
-    /* HEADER -  scroll event */
-    var $wrap = $('#header');
-    var didScroll;
-    var lastScrollTop = 0;
-    var delta = 5;
-    var navbarHeight = $wrap.outerHeight();
-
-    $(window).scroll(function(event){
-        didScroll = true;
-    });
-
-    setInterval(function() {
-        if (didScroll) {
-            hasScrolled();
-            didScroll = false;
-        }
-    }, 250);
-
-    function hasScrolled() {
-        var st = $(this).scrollTop();
-
-        if(Math.abs(lastScrollTop - st) <= delta)
-        return;
-
-        if (st > lastScrollTop && st > navbarHeight){
-            // Scroll Down
-            $wrap.removeClass('down').addClass('up');
-        } else {
-            // Scroll Up
-            if(st + $(window).height() < $(document).height()) {
-                $wrap.removeClass('up').addClass('down');
-            }
-        }
-
-        lastScrollTop = st;
-    }
-
-
-
-})();/*
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-*/(function(){
-
-
 
     /* HEADER - GNB */
     var $wrap = $('#header');
-    var $gnb = $('#header').find('#gnb');
-    var headerH = $wrap.height() * -1;
+    var $gnb = $wrap.find('#gnb');
 
     // section 이동
     $gnb.find('.link_gnb').on('click', function(){
@@ -70,17 +27,9 @@ $(function(){ // DOCUMENT READY...
 
         moveTo({
             speed : 400,
-            top : headerH,
+            top : 0,
             target : target,
             focus : focus,
-            afterAction : function(){
-                if($wrap.hasClass('down') && target !== '#secVisual'){
-                    setTimeout(function(){
-                        $wrap.removeClass('down');
-                        $wrap.addClass('up');
-                    }, 200);
-                }
-            }
         });
     });
 
@@ -138,10 +87,10 @@ $(function(){ // DOCUMENT READY...
     var $wrap = $('#secVisual');
 
     var swiper = new Swiper($wrap.find('.swiper-container'), {
-        autoplay: {
-            delay: 4000,
-            disableOnInteraction : false,
-        },
+        // autoplay: {
+        //     delay: 4000,
+        //     disableOnInteraction : false,
+        // },
         pagination: {
             el: $wrap.find('.swiper-pagination'),
             clickable: true,
@@ -164,7 +113,7 @@ $(function(){ // DOCUMENT READY...
     var swiper = new Swiper($wrap.find('.swiper-container'), {
         autoplay: {
             delay: 6000,
-            //disableOnInteraction : false,
+            disableOnInteraction : false,
         },
         effect: 'fade',
         fadeEffect: { crossFade: true },
@@ -255,6 +204,17 @@ $(function(){ // DOCUMENT READY...
     });
 
 
+    // 순서 reset
+    scrollAction({
+        target: $wrap,
+        top: 10,
+        scrollDownAction : function(){
+            // 스크롤 DOWN 액션
+            swiper.slideTo($wrap.find('.swiper-slide[data-swiper-slide-index=0]').index(), 600, true);
+        },
+    });
+
+
 
 })();/*
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -264,26 +224,35 @@ $(function(){ // DOCUMENT READY...
 
     /* 전문가 네트워크 */
     var $wrap = $('#secNetwork');
+    var tm =  function(kill){
+        TweenMax.to($wrap.find('.bg .line'), 2, {strokeDasharray:3460, strokeDashoffset:1730, delay:0.5, ease:Linear.easeNone})
+        TweenMax.staggerTo($wrap.find('.bg span'), 0.5, {opacity:1, delay:0.5}, 0.5)
+        TweenMax.staggerTo($wrap.find('.item_network'), 2, {backgroundColor:'rgba(0,0,0,0.7)', className:'item_network on'}, 0.5);
 
-    // line 리셋
-    TweenMax.set($wrap.find('.bg .line'), {strokeDasharray:2000, strokeDashoffset:2000})
+        if(kill) TweenMax.killAll()
+    }
 
     scrollAction({
         target: $wrap,
-        top: 40,
+        top: 10,
         scrollDownAction : function(){
             // 스크롤 DOWN 액션
-            $wrap.addClass('active');
+           tm();
+        }
+    });
 
-            if($wrap.hasClass('active')){
-                TweenMax.to($wrap.find('.bg .line'), 2, {strokeDasharray:3460, strokeDashoffset:1730, delay:0.5, ease:Linear.easeNone})
-                TweenMax.staggerTo($wrap.find('.bg span'), 0.5, {opacity:1, delay:0.5}, 0.5)
-                TweenMax.staggerTo($wrap.find('.item_network'), 2, {backgroundColor:'rgba(0,0,0,0.7)', delay:2.5, className:'item_network on'}, 0.5)
-            }
-        },
+    scrollAction({
+        target: $wrap,
+        top: 100,
         scrollUpAction : function(){
             // 스크롤 UP 액션
-        }
+            var kill = true
+            tm(kill);
+
+            $wrap.find('.bg .line').css({'stroke-dasharray':2000, 'stroke-dashoffset':2000});
+            $wrap.find('.bg span').css({opacity:0});
+            $wrap.find('.item_network').css({'background-color':'rgba(0,0,0,0)'}).removeClass('on');
+        },
     });
 
 
@@ -367,6 +336,17 @@ $(function(){ // DOCUMENT READY...
 
     var $pagination = $wrap.find('.swiper-pagination');
     $pagination.append('<div class="bar"></div>')
+    
+
+    // 순서 reset
+    scrollAction({
+        target: $wrap,
+        top: 10,
+        scrollDownAction : function(){
+            // 스크롤 DOWN 액션
+            swiper.slideTo($wrap.find('.swiper-slide[data-swiper-slide-index=0]').index(), 1000, true);            
+        },
+    });
 
 
 
@@ -492,11 +472,10 @@ $(function(){ // DOCUMENT READY...
 
 
 
+    /* 상담신청 side */
     var $wrap = $('#asideCont');
-    var $visual = $('#secVisual');
     var $service = $('#secService');
     var $freeConsult = $('#freeConsult');
-    var $asideFooter = $('#asideFooter');
     var $btnOpen = $wrap.find('.btn_open');
     var wrapW = $wrap.width();
 
@@ -504,7 +483,6 @@ $(function(){ // DOCUMENT READY...
     $btnOpen.on('click', function(){
         if (!$wrap.hasClass('active')){
             $wrap.addClass('active noTouch');
-            $asideFooter.removeClass('active');
             TweenMax.to($wrap, 0.4, {ease: Power1.easeIn, right:0, onComplete:function(){
                 $wrap.removeClass('noTouch');
             }});
@@ -519,33 +497,7 @@ $(function(){ // DOCUMENT READY...
             TweenMax.to($wrap, 1, {ease: Power4.easeOut, right:wrapW * -1, onComplete:function(){
                 $wrap.removeClass('noTouch');
             }});
-
-            if ($wrap.hasClass('btnChange')){
-                $asideFooter.addClass('active');
-            }
         };
-    });
-
-    // #secVisual offset().top '0'인 경우 자동으로 layer open
-    var winT = $(window).scrollTop();
-    var tmAutoStart = TweenMax.delayedCall(0.5, function(){
-        if (!$wrap.hasClass('active')){
-            $btnOpen.click();
-        }
-    });
-
-    scrollAction({
-        target: $visual,
-        top: 0,
-        scrollDownAction : function(){
-            if (winT >= 10){
-                tmAutoStart.kill();
-            }
-        },
-        scrollUpAction : function(){
-            // 스크롤 UP 액션
-            tmAutoStart.restart(true);
-        },
     });
 
     // #secService 인접 시 Layer Close
@@ -557,25 +509,20 @@ $(function(){ // DOCUMENT READY...
             $wrap.addClass('btnChange');
 
             if ($wrap.hasClass('active')){
-                $btnOpen.click();                
-            } else {
-                $asideFooter.addClass('active');
+                $btnOpen.click();
             }
         },
         scrollUpAction : function(){
             // 스크롤 UP 액션
             $wrap.removeClass('btnChange');
-            $asideFooter.removeClass('active');
 
             if ($wrap.hasClass('active')){
-                $btnCont.click();                
+                $btnCont.click();
             }
         },
     });
 
     // #freeConsult 인접 시 Layer Close
-    var tmBtnOpacity;
-
     scrollAction({
         target: $freeConsult,
         top: 30,
@@ -583,26 +530,23 @@ $(function(){ // DOCUMENT READY...
             // 스크롤 DOWN 액션
             if ($wrap.hasClass('active')){
                 $btnOpen.click();
-                $wrap.addClass('noTouch');
-                tmBtnOpacity = TweenMax.to($wrap, 0.3, {opacity:0, delay:1})
-                $asideFooter.removeClass('active');
+
+                $wrap.addClass('noTouch').animate({
+                    opacity : 0
+                }, 300);
             } else {
-                $wrap.addClass('noTouch');
-                tmBtnOpacity = TweenMax.to($wrap, 0.3, {opacity:0})
-                $asideFooter.removeClass('active');
+                $wrap.addClass('noTouch').animate({
+                    opacity : 0
+                }, 300);
             }
         },
         scrollUpAction : function(){
             // 스크롤 UP 액션
-            $asideFooter.addClass('active');
-
-            tmBtnOpacity.kill()
-            TweenMax.set($wrap, {right:wrapW * -1, onComplete:function(){
-                $wrap.removeClass('active');
-            }});
-            TweenMax.to($wrap, 0.3, {opacity:1, onComplete:function(){
+            $wrap.css({right : wrapW * -1}).removeClass('active').animate({
+                opacity : 1
+            }, 300,function(){
                 $wrap.removeClass('noTouch');
-            }});
+            });
         },
     });
 
@@ -631,9 +575,7 @@ $(function(){ // DOCUMENT READY...
 
     var stepFnc = function(){
         var itemCss = {borderColor:'#f6d039', color:'#000', backgroundColor:'#f6d039'}
-        setTimeStep =  new TimelineMax({delay:0.5,onUpdate:updateStats, onComplete:function(){
-            stepPlay = true;
-
+        setTimeStep =  new TimelineMax({delay:0.5,onUpdate:updateStats, onComplete:function(){            
             if (!$wrap.hasClass('active')) {
                     setTimeStep.kill();
                     return;
@@ -642,18 +584,21 @@ $(function(){ // DOCUMENT READY...
             $btnCont.click();
         }});
 
-        setTimeStep.to($step.find('.item_step:eq(0)'), 1, itemCss)
-                   .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-1550'})
-                   .to($step.find('.item_step:eq(1)'), 1, itemCss)
-                   .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-1810'})
-                   .to($step.find('.item_step:eq(2)'), 1, itemCss)
-                   .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-2180'})
-                   .to($step.find('.item_step:eq(3)'), 1, itemCss)
-                   .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-2410'})
-                   .to($step.find('.item_step:eq(4)'), 1, itemCss)
-                   .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-2640', strokeDasharray:'1220, 1300'})
-                   .to($step.find('.item_step:eq(5)'), 1, itemCss)
-                   .to($step, 0, {delay:1})
+        setTimeStep.call(function(){
+                        if(!stepPlay) stepPlay = true;
+                    })
+                    .to($step.find('.item_step:eq(0)'), 1, itemCss,)
+                    .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-1550'})
+                    .to($step.find('.item_step:eq(1)'), 1, itemCss)
+                    .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-1810'})
+                    .to($step.find('.item_step:eq(2)'), 1, itemCss)
+                    .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-2180'})
+                    .to($step.find('.item_step:eq(3)'), 1, itemCss)
+                    .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-2410'})
+                    .to($step.find('.item_step:eq(4)'), 1, itemCss)
+                    .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-2640', strokeDasharray:'1220, 1300'})
+                    .to($step.find('.item_step:eq(5)'), 1, itemCss)
+                    .to($step, 0, {delay:1})
 
         function updateStats() {
             var timer = setTimeStep.totalProgress().toFixed(3); //소수점 3자리
@@ -663,9 +608,7 @@ $(function(){ // DOCUMENT READY...
     }
 
     var contFnc = function(){
-        setTimeCont = TweenMax.to($wrap, 6, {onUpdate:updateStats, onComplete:function(){
-            contPlay = true;
-
+        setTimeCont = TweenMax.to($wrap, 6, {onUpdate:updateStats, onComplete:function(){            
             if (!$wrap.hasClass('active') || $wrap.hasClass('btnChange')) {
                 setTimeCont.kill();
                 return;
@@ -675,8 +618,8 @@ $(function(){ // DOCUMENT READY...
         }});
 
         function updateStats() {
+            if(!contPlay) contPlay = true;            
             var timer = setTimeCont.totalProgress().toFixed(3); //소수점 3자리
-
             $progress.find('.progress_fill').css('width', (timer * 100) + '%');
         }
     }
@@ -687,7 +630,7 @@ $(function(){ // DOCUMENT READY...
 
         TweenMax.set($step.find('.bg.fst'), {strokeDasharray:'1100, 1300', strokeDashoffset:'-1350'});
         TweenMax.set($step.find('.item_step'), {borderColor:'#fff', color:'#fff', backgroundColor:'#457dd8'});
-        swiper.slideTo($wrap.find('.swiper-slide:eq(0)').index(), 0, true);
+        swiper.slideTo($wrap.find('.swiper-slide:eq(0)').index(), 200, true);
         stepFnc();
     });
 
@@ -695,7 +638,7 @@ $(function(){ // DOCUMENT READY...
         if (stepPlay) setTimeStep.kill();
         if (contPlay) setTimeCont.kill();
 
-        swiper.slideTo($wrap.find('.swiper-slide:eq(1)').index(), 0, true);
+        swiper.slideTo($wrap.find('.swiper-slide:eq(1)').index(), 200, true);
         contFnc();
     });
 
@@ -705,6 +648,17 @@ $(function(){ // DOCUMENT READY...
         setTimeStep.kill();
         setTimeCont.kill();
     });
+
+
+
+})();/*
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+*/(function(){
+
+
+
+    /* 상담신청 side - loadForm */
+    var $wrap = $('#asideCont');
 
     // 입력폼
     $wrap.find('.formMemo textarea').html('상담가능일시 : \r\n내용 :');
@@ -748,10 +702,10 @@ $(function(){ // DOCUMENT READY...
 
             if(cookie.region){
                 var region = cookie.region;
-                $('#freeConsult select.local').val(region);
+                $wrap.find('select.local').val(region);
             } else {
                 // if(myCity&&$('#freeConsult select.local').find('[value='+myCity+']').length){
-                //     $('#freeConsult select.local').val(myCity);
+                //     $wrap.find('select.local').val(myCity);
                 // };
             }
 
@@ -797,35 +751,26 @@ $(function(){ // DOCUMENT READY...
         }
     });
 
-    // floating footer
-    $asideFooter.on('click', function(){
-        if (!$wrap.hasClass('active')){
-            $btnOpen.click();
-        }
-    });
-
 
 
 })();/*
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 */(function(){
 
-    
-    
-    /* 결과페이지 sample */ 
 
+
+
+    /* 결과페이지 sample */
     // 파리미터
     var data = getQuery();
 
     function getQuery(){
         var url = document.location.href;
-        var qs = url.substring(url.indexOf('?') + 1).split('&');        
+        var qs = url.substring(url.indexOf('?') + 1).split('&');
             data = decodeURIComponent(qs);
         return data;
     };
 
-
-    
     // layer
     if(data == 'complete'){
         LAYER({
@@ -836,22 +781,22 @@ $(function(){ // DOCUMENT READY...
 
                 $btnClose.attr('data-public-path','/img/common/btnClose01.png');
                 $btnClose.on('click', function(){
-                    $('.layer_wrap').off('scroll touchmove mousewheel'); 
+                    $('.layer_wrap').off('scroll touchmove mousewheel');
                 });
 
                 $('.layer_wrap').on('scroll touchmove mousewheel', function(e){
                     e.preventDefault();
-                    e.stopPropagation(); 
+                    e.stopPropagation();
                     return false;
                 });
 
                 // SVG Import
                 $('img[src*=".svg"]').makeSvg();
 
-                
+
                 var itemCss = {borderColor:'#f6d039', color:'#000', backgroundColor:'#f6d039'}
                 var setTimeStep =  new TimelineMax({repeatDelay:1, repeat:-1})
-        
+
                 setTimeStep.to($wrap.find('.item_step:eq(0)'), 0.5, itemCss)
                             .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-1550'})
                             .to($wrap.find('.item_step:eq(1)'), 0.5, itemCss)

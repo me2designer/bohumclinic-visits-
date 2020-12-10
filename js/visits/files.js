@@ -1,3 +1,6 @@
+var thisPage = {};
+thisPage.pop = {list:''}
+
 var fileList = [
     SERVER.fonts+'/fonts/NanumBarunGothic/NanumBarunGothic.css',
     SERVER.fonts+'/fonts/CenturyGothic/CenturyGothic.css',
@@ -24,3 +27,5 @@ if(location.pathname==''||location.pathname=='/') {
 }
 
 FILES(fileList);
+
+

@@ -10,10 +10,9 @@
 .inner {width:1150px}
 
 /* HEADER */
-#header {position:fixed;top:0;left:0;right:0;min-width:1600px;height:90px;background-color:#fff;transition:top 0.4s ease-in-out}
+#header {position:fixed;top:0;left:0;right:0;min-width:1600px;height:90px;background-color:#fff}
 #header .logo {position:absolute;top:20px;left:90px;width:92px}
 #header .logo .svg {width:auto;height:50px}
-#header.up {top:-90px;transition:top 1s 2s ease-in-out}
 
 /* HEADER - GNB */
 #gnb {width:1096px;margin:0 auto}
@@ -21,14 +20,14 @@
 #gnb .list_gnb .link_gnb {width:170px;margin-left:15px;font-size:18px}
 #gnb .list_gnb .link_gnb:first-child {margin-left:0}
 #gnb .list_gnb .link_gnb.on {color:#457dd8}
-#gnb .list_gnb .bar {position:absolute;left:0;bottom:-15px;height:3px;background-color:#457dd8;transform:translateX(60.2813px);transform-origin:center center;transition:all 0.5s 0.2s}
+#gnb .list_gnb .bar {position:absolute;left:0;bottom:-15px;height:3px;background-color:#457dd8;transform:translateX(60.2813px);transform-origin:center center;transition:all 0.5s}
 
 
 /****************************************************************************
 	layer
 ****************************************************************************/
 /* 상담신청 side */
-#asideCont {position:fixed;top:0;right:-882px;z-index:32;width:882px;height:100%;padding-top:115px;background-color:#457dd8}
+#asideCont {position:fixed;top:0;right:-882px;z-index:21;width:882px;height:100%;padding-top:155px;background-color:#457dd8}
 #asideCont .btn_open {position:absolute;top:50%;left:-142px;z-index:1;width:142px;height:142px;color:#fff;background-color:#457dd8;transform:translate(0,-50%)}
 #asideCont .btn_open::before {content:'';position:absolute;top:50%;left:50%;width:119px;height:119px;margin:-59px 0 0 -59px;background:url('/img/visits/main_2020/aside_cont_btn_txt.png');opacity:0;transition:opacity 0.3s;animation:asideContBtnTxt 10s infinite linear}
 #asideCont .btn_open::after {content:'상담신청';display:block;font-size:16px;transition:opacity 0.3s}
@@ -126,11 +125,6 @@
 #asideCont .submit {margin-top:30px;font-weight:bold;color:#000;background-color:#f6d039}
 #asideCont .submit::before {content:'보험클리닉 방문상담신청';}
 
-/* 상담신청 footer */
-#asideFooter {position:fixed;left:0;right:0;bottom:-80px;z-index:31;height:80px;background-color:#db6f19;transition:bottom 0.3s ease-in}
-#asideFooter .btn_cont {position:absolute;left:50%;bottom:-8px;width:770px;height:150px;margin-left:-560px;background:url('/img/visits/main_2020/aside_footer_btn.png') 0 0 no-repeat;opacity:0;transition:opacity 0.3s ease-in}
-#asideFooter.active {bottom:0;transition:bottom 0.4s ease-out}
-#asideFooter.active .btn_cont {opacity:1;transition:bottom 0.4s 0.2s ease-out}
 
 /****************************************************************************
 	content area
@@ -141,13 +135,13 @@
 /* 메인 비주얼 */
 #secVisual {padding-top:90px}
 #secVisual .swiper-container {width:calc(100% - 100px);height:calc(100vh - 90px);min-height:600px;max-height:900px}
-#secVisual .swiper-slide {background:0 0 no-repeat;background-size:cover}
+#secVisual .swiper-slide {background:center center no-repeat;background-size:cover}
 #secVisual .swiper-slide:nth-child(1) {background-image:url('/img/visits/main_2020/visual_bg1.jpg')}
 #secVisual .swiper-slide:nth-child(2) {background-image:url('/img/visits/main_2020/visual_bg2.jpg')}
 #secVisual .tit_slide {position:absolute;top:50%;left:50%;width:900px;height:250px;margin:-125px 0 0 -450px;font-size:66px;font-weight:400;color:#fff;text-align:center;letter-spacing:-0.03em;text-shadow:1px 1px 8px rgba(0,0,0,0.7);opacity:0;transform:translateY(10%)}
 #secVisual .tit_slide strong {display:block;font-weight:700;text-shadow:1px 1px 8px rgba(0,0,0,0.7)}
 #secVisual .swiper-slide-active .tit_slide {opacity:1;transform:translateY(0)}
-#secVisual .swiper-pagination {bottom:0}
+#secVisual .swiper-pagination {bottom:40px}
 #secVisual .swiper-pagination-bullet {width:15px;height:4px;border-radius:2em;background-color:rgba(255,255,255,0.9);box-shadow:1px 1px 3px rgba(0,0,0,0.1)}
 #secVisual .swiper-pagination-bullet-active {width:40px;background-color:#fff}
 [data-device="pc"] #secVisual .tit_slide {transition:all 1s ease-in-out}
@@ -209,12 +203,12 @@
 
 /* 서비스 소개 - 첫번째 탭 */
 #secService .msg {position:absolute;top:293px;left:120px}
-#secService .msg .tit_msg {margin-bottom:70px;font-size:30px;color:#1e2cad;line-height:1.3em;opacity:0;transform:translateX(100px)}
-#secService .msg .desc_msg {font-size:16px;color:#fff;opacity:0;transform:translateX(100px)}
+#secService .msg .tit_msg {margin-bottom:68px;font-size:30px;color:#1e2cad;line-height:1.3em;opacity:0;transform:translateX(100px)}
+#secService .msg .desc_msg {font-size:20px;color:#fff;opacity:0;transform:translateX(100px)}
 #secService .msg .tit_thumb {position:absolute;top:380px;left:300px;font-size:18px;color:#fff;white-space:nowrap;}
 #secService .msg .borderline {position:absolute;top:110px;left:0;width:773px;height:2px;background-color:#fff}
 #secService .msg .borderline::after {content:'';position:absolute;top:-6px;right:0;width:14px;height:14px;border-radius:100%;background-color:#fff}
-#secService .swiper-pagination {top:770px;left:120px;opacity:0}
+#secService .swiper-pagination {top:775px;left:120px;opacity:0}
 #secService .swiper-pagination.on {opacity:1}
 #secService .swiper-pagination-bullet {width:15px;height:4px;margin-right:8px;border-radius:2em;background-color:#fff}
 #secService .swiper-pagination-bullet-active {width:40px;}
