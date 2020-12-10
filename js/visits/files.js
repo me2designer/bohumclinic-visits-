@@ -1,3 +1,4 @@
+SERVER.name = 'test'
 var thisPage = {};
 thisPage.pop = {list:''}
 
