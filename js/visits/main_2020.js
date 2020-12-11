@@ -91,10 +91,10 @@ $(function(){ // DOCUMENT READY...
     var $wrap = $('#secVisual');
     var state = false;   
     var swiper = new Swiper($wrap.find('.swiper-container'), {
-        autoplay: {
-            delay: 4000,
-            disableOnInteraction : false,
-        },
+        // autoplay: {
+        //     delay: 4000,
+        //     disableOnInteraction : false,
+        // },
         effect: 'fade',
         fadeEffect: { crossFade: true },
         speed: 1000,
@@ -107,22 +107,22 @@ $(function(){ // DOCUMENT READY...
                 var $this = $wrap.find('.swiper-slide-active');
 
                 $wrap.addClass('active');
-                TweenMax.set($wrap.find('.bg'), {scale:1.05});
-                TweenMax.to($this.find('.bg'), 5, {scale:1});
+                TweenMax.set($wrap.find('.bg'), {});
+                TweenMax.to($this.find('.bg'), 5, {backgroundSize:'100% 100%'});
 
                 state = true;
             },
             slideChangeTransitionEnd : function(){
-                var $this = $wrap.find('.swiper-slide-active');
+                // var $this = $wrap.find('.swiper-slide-active');
 
-                TweenMax.set($wrap.find('.bg'), {scale:1.05});
-                TweenMax.to($this.find('.bg'), 5, {scale:1});
-                TweenMax.delayedCall(1, function(){
-                    if (!state) return;
-                    state = false;
+                // TweenMax.set($wrap.find('.bg'), {});
+                // TweenMax.to($this.find('.bg'), 5, {});
+                // TweenMax.delayedCall(1, function(){
+                //     if (!state) return;
+                //     state = false;
                     
-                    $('#asideCont .btn_open').click();
-                });
+                //     $('#asideCont .btn_open').click();
+                // });
             },
         },
     });
