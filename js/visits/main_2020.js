@@ -283,7 +283,6 @@ $(function(){ // DOCUMENT READY...
         target: $wrap,
         top: 100,
         scrollUpAction : function(){
-            console.log('a');
             // 스크롤 UP 액션
             tl.kill();
             $wrap.find('.bg .line').css({'stroke-dasharray':2000, 'stroke-dashoffset':2000});
@@ -551,10 +550,7 @@ $(function(){ // DOCUMENT READY...
         },
         scrollUpAction : function(){
             // 스크롤 UP 액션
-
-            if ($wrap.hasClass('active') && $wrap.hasClass('btnChange')){
-                $wrap.removeClass('btnChange');            
-            }
+            $wrap.removeClass('btnChange');                        
         },
     });
 

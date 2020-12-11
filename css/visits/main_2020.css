@@ -47,6 +47,10 @@
 @keyframes asideContBtnTxt {
     100%        {transform:rotate(360deg)}
 }
+@media screen and (max-height: 1000px) { 
+    #asideCont {padding-top:120px}
+}
+
 
 /* 상담신청 side - swiper */
 #asideCont .swiper-container {overflow:visible;width:730px;margin:0 auto}
@@ -73,6 +77,9 @@
 #asideCont[data-slide="1"] .head .txt2 {font-size:32px;font-weight:100;color:#c9edfe;line-height:1.3em}
 #asideCont[data-slide="0"] .head::before {background-image:url('/img/visits/main_2020/aside_cont_head_model1.png')}
 #asideCont[data-slide="1"] .head::before {background-image:url('/img/visits/main_2020/aside_cont_head_model2.png')}
+@media screen and (max-height: 1000px) { 
+    #asideCont[data-slide="1"] .head {padding-bottom:55px}
+}
 
 /* 상담신청 side - swiper - 상담신청 후 진행절차 */
 #asideCont .step {padding:35px 0 0 20px}
