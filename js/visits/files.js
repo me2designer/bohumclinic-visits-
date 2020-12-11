@@ -1,6 +1,6 @@
-SERVER.name = 'test'
+SERVER.name = 'test';
 var thisPage = {};
-thisPage.pop = {list:''}
+thisPage.pop = {list:''};
 
 var fileList = [
     SERVER.fonts+'/fonts/NanumBarunGothic/NanumBarunGothic.css',

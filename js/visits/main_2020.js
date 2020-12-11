@@ -1,5 +1,4 @@
 
-
 $(function(){ // DOCUMENT READY...
 /*
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -90,14 +89,14 @@ $(function(){ // DOCUMENT READY...
 
     /* 메인 비주얼 */
     var $wrap = $('#secVisual');
-    var state = false;
-
+    var state = false;   
     var swiper = new Swiper($wrap.find('.swiper-container'), {
         autoplay: {
             delay: 4000,
             disableOnInteraction : false,
         },
         effect: 'fade',
+        fadeEffect: { crossFade: true },
         speed: 1000,
         pagination: {
             el: $wrap.find('.swiper-pagination'),
@@ -139,6 +138,20 @@ $(function(){ // DOCUMENT READY...
         },     
     });
 
+    var delay = 300;
+    var timer = null;
+
+    $(window).on('resize', function(){
+        clearTimeout(timer);
+        timer = setTimeout(function(){
+            var winH = window.innerHeight;
+            var maxH = Math.abs((winH * 15 / 100) - winH);
+        
+            $wrap.find('.swiper-container').css('max-height',maxH);
+        }, delay);
+    }).trigger('resize');
+
+    
 
 })();/*
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -619,7 +632,7 @@ $(function(){ // DOCUMENT READY...
         setTimeStep.call(function(){
                         if(!stepPlay) stepPlay = true;
                     })
-                    .to($step.find('.item_step:eq(0)'), 1, itemCss,)
+                    .to($step.find('.item_step:eq(0)'), 1, itemCss)
                     .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-1550'})
                     .to($step.find('.item_step:eq(1)'), 1, itemCss)
                     .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-1810'})
