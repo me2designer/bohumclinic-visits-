@@ -85,18 +85,42 @@ $(function(){ // DOCUMENT READY...
 
     /* 메인 비주얼 */
     var $wrap = $('#secVisual');
+    var state = false;
 
     var swiper = new Swiper($wrap.find('.swiper-container'), {
-        // autoplay: {
-        //     delay: 4000,
-        //     disableOnInteraction : false,
-        // },
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction : false,
+        },
+        effect: 'fade',
+        speed: 1000,
         pagination: {
             el: $wrap.find('.swiper-pagination'),
             clickable: true,
         },
-        effect: 'fade',
-        speed: 1000,
+        on : {
+            init : function(){                
+                var $this = $wrap.find('.swiper-slide-active');
+
+                $wrap.addClass('active');
+                TweenMax.set($wrap.find('.bg'), {scale:1.05});
+                TweenMax.to($this.find('.bg'), 5, {scale:1});
+
+                state = true;
+            },
+            slideChangeTransitionEnd : function(){
+                var $this = $wrap.find('.swiper-slide-active');
+
+                TweenMax.set($wrap.find('.bg'), {scale:1.05});
+                TweenMax.to($this.find('.bg'), 5, {scale:1});
+                TweenMax.delayedCall(1, function(){
+                    if (!state) return;
+                    state = false;
+                    
+                    $('#asideCont .btn_open').click();
+                });
+            },
+        },
     });
 
 
@@ -336,7 +360,7 @@ $(function(){ // DOCUMENT READY...
 
     var $pagination = $wrap.find('.swiper-pagination');
     $pagination.append('<div class="bar"></div>')
-    
+
 
     // 순서 reset
     scrollAction({
@@ -344,7 +368,7 @@ $(function(){ // DOCUMENT READY...
         top: 10,
         scrollDownAction : function(){
             // 스크롤 DOWN 액션
-            swiper.slideTo($wrap.find('.swiper-slide[data-swiper-slide-index=0]').index(), 1000, true);            
+            swiper.slideTo($wrap.find('.swiper-slide[data-swiper-slide-index=0]').index(), 1000, true);
         },
     });
 
@@ -575,7 +599,7 @@ $(function(){ // DOCUMENT READY...
 
     var stepFnc = function(){
         var itemCss = {borderColor:'#f6d039', color:'#000', backgroundColor:'#f6d039'}
-        setTimeStep =  new TimelineMax({delay:0.5,onUpdate:updateStats, onComplete:function(){            
+        setTimeStep =  new TimelineMax({delay:0.5,onUpdate:updateStats, onComplete:function(){
             if (!$wrap.hasClass('active')) {
                     setTimeStep.kill();
                     return;
@@ -608,7 +632,7 @@ $(function(){ // DOCUMENT READY...
     }
 
     var contFnc = function(){
-        setTimeCont = TweenMax.to($wrap, 6, {onUpdate:updateStats, onComplete:function(){            
+        setTimeCont = TweenMax.to($wrap, 6, {onUpdate:updateStats, onComplete:function(){
             if (!$wrap.hasClass('active') || $wrap.hasClass('btnChange')) {
                 setTimeCont.kill();
                 return;
@@ -618,7 +642,7 @@ $(function(){ // DOCUMENT READY...
         }});
 
         function updateStats() {
-            if(!contPlay) contPlay = true;            
+            if(!contPlay) contPlay = true;
             var timer = setTimeCont.totalProgress().toFixed(3); //소수점 3자리
             $progress.find('.progress_fill').css('width', (timer * 100) + '%');
         }
