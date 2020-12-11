@@ -24,10 +24,15 @@ $(function(){ // DOCUMENT READY...
     $gnb.find('.link_gnb').on('click', function(){
         var target = $(this).attr('data-target')||$(this).attr('data-anchor');
         var focus = $(this).attr('data-focus');
+        var top = 0;
+
+        if (target == '#secAward'){
+            top = 20 * -1;
+        }
 
         moveTo({
             speed : 400,
-            top : 0,
+            top : top,
             target : target,
             focus : focus,
         });
@@ -123,6 +128,16 @@ $(function(){ // DOCUMENT READY...
         },
     });
 
+    // scroll down시 tweenMax 종료
+    var $secService = $('#secService');
+    scrollAction({
+        target: $secService,
+        top: 90,
+        scrollDownAction : function(){
+            // 스크롤 DOWN 액션
+            state = false;
+        },     
+    });
 
 
 })();/*
@@ -248,20 +263,19 @@ $(function(){ // DOCUMENT READY...
 
     /* 전문가 네트워크 */
     var $wrap = $('#secNetwork');
-    var tm =  function(kill){
-        TweenMax.to($wrap.find('.bg .line'), 2, {strokeDasharray:3460, strokeDashoffset:1730, delay:0.5, ease:Linear.easeNone})
-        TweenMax.staggerTo($wrap.find('.bg span'), 0.5, {opacity:1, delay:0.5}, 0.5)
-        TweenMax.staggerTo($wrap.find('.item_network'), 2, {backgroundColor:'rgba(0,0,0,0.7)', className:'item_network on'}, 0.5);
-
-        if(kill) TweenMax.killAll()
-    }
-
+    var tl = new TimelineMax();
+    
     scrollAction({
         target: $wrap,
         top: 10,
         scrollDownAction : function(){
             // 스크롤 DOWN 액션
-           tm();
+            tl.addLabel("span", 0)
+              .to($wrap.find('.bg .line'), 2, {strokeDasharray:3460, strokeDashoffset:1730, ease:Linear.easeNone})
+              .staggerTo($wrap.find('.bg span'), 0.5, {opacity:1}, 0.5, "span")
+              .staggerTo($wrap.find('.item_network'), 2, {backgroundColor:'rgba(0,0,0,0.7)', className:'item_network on'}, 0.5);
+
+            tl.restart();
         }
     });
 
@@ -269,10 +283,9 @@ $(function(){ // DOCUMENT READY...
         target: $wrap,
         top: 100,
         scrollUpAction : function(){
+            console.log('a');
             // 스크롤 UP 액션
-            var kill = true
-            tm(kill);
-
+            tl.kill();
             $wrap.find('.bg .line').css({'stroke-dasharray':2000, 'stroke-dashoffset':2000});
             $wrap.find('.bg span').css({opacity:0});
             $wrap.find('.item_network').css({'background-color':'rgba(0,0,0,0)'}).removeClass('on');
@@ -538,10 +551,9 @@ $(function(){ // DOCUMENT READY...
         },
         scrollUpAction : function(){
             // 스크롤 UP 액션
-            $wrap.removeClass('btnChange');
 
-            if ($wrap.hasClass('active')){
-                $btnCont.click();
+            if ($wrap.hasClass('active') && $wrap.hasClass('btnChange')){
+                $wrap.removeClass('btnChange');            
             }
         },
     });
@@ -603,7 +615,7 @@ $(function(){ // DOCUMENT READY...
             if (!$wrap.hasClass('active')) {
                     setTimeStep.kill();
                     return;
-                }
+            }
 
             $btnCont.click();
         }});
