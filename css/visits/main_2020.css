@@ -143,7 +143,7 @@
 #secVisual {padding-top:90px}
 #secVisual .swiper-container {width:calc(100% - 100px);height:calc(100vh - 90px);min-height:600px;max-height:900px;}
 #secVisual .swiper-slide {overflow:hidden}
-#secVisual .swiper-slide .bg {position:absolute;left:0;right:0;top:0;bottom:0;background:center center no-repeat;background-size:cover;opacity:0}
+#secVisual .swiper-slide .bg {position:absolute;top:0;bottom:0;left:0;right:0;background:center center no-repeat;background-size:cover;opacity:0;transform:rotate(.001deg);}
 #secVisual .swiper-slide:nth-child(1) .bg {background-image:url('/img/visits/main_2020/visual_bg1.jpg')}
 #secVisual .swiper-slide:nth-child(2) .bg {background-image:url('/img/visits/main_2020/visual_bg2.jpg')}
 #secVisual .tit_slide {position:absolute;top:50%;left:50%;z-index:1;width:900px;height:250px;margin:-125px 0 0 -450px;font-size:66px;font-weight:400;color:#fff;text-align:center;letter-spacing:-0.03em;text-shadow:1px 1px 8px rgba(0,0,0,0.7);opacity:0;transform:translateY(10%)}
@@ -153,7 +153,6 @@
 #secVisual .swiper-pagination-bullet {width:15px;height:4px;border-radius:2em;background-color:rgba(255,255,255,0.9);box-shadow:1px 1px 3px rgba(0,0,0,0.1)}
 #secVisual .swiper-pagination-bullet-active {width:40px;background-color:#fff}
 [data-device="pc"] #secVisual .tit_slide {transition:all 1s ease-in-out}
-#secVisual.active .swiper-container {transition:max-height 0.4s ease-in-out}
 #secVisual.active .swiper-slide .bg {opacity:1}
 
 /* 서비스 소개 */

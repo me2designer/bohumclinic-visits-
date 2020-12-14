@@ -89,12 +89,28 @@ $(function(){ // DOCUMENT READY...
 
     /* 메인 비주얼 */
     var $wrap = $('#secVisual');
-    var state = false;   
+    
+    // max-Height;
+    var delay = 300;
+    var timer = null;
+
+    $(window).on('resize', function(){
+        clearTimeout(timer);
+        timer = setTimeout(function(){
+            var winH = window.innerHeight;
+            var maxH = Math.abs((winH * 15 / 100) - winH);
+        
+            $wrap.find('.swiper-container').css('max-height',maxH);
+        }, delay);
+    }).trigger('resize');
+
+    // swiper
+    var state = false; 
     var swiper = new Swiper($wrap.find('.swiper-container'), {
-        // autoplay: {
-        //     delay: 4000,
-        //     disableOnInteraction : false,
-        // },
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction : false,
+        },
         effect: 'fade',
         fadeEffect: { crossFade: true },
         speed: 1000,
@@ -107,22 +123,22 @@ $(function(){ // DOCUMENT READY...
                 var $this = $wrap.find('.swiper-slide-active');
 
                 $wrap.addClass('active');
-                TweenMax.set($wrap.find('.bg'), {});
-                TweenMax.to($this.find('.bg'), 5, {backgroundSize:'100% 100%'});
+                TweenMax.set($wrap.find('.bg'), {scale:1.15});
+                TweenMax.to($this.find('.bg'), 5, {ease:Linear.easeNone, scale:1.01});
 
                 state = true;
             },
             slideChangeTransitionEnd : function(){
-                // var $this = $wrap.find('.swiper-slide-active');
+                var $this = $wrap.find('.swiper-slide-active');
 
-                // TweenMax.set($wrap.find('.bg'), {});
-                // TweenMax.to($this.find('.bg'), 5, {});
-                // TweenMax.delayedCall(1, function(){
-                //     if (!state) return;
-                //     state = false;
+                TweenMax.set($wrap.find('.bg'), {scale:1.15});
+                TweenMax.to($this.find('.bg'), 5, {ease:Linear.easeNone, scale:1.01});
+                TweenMax.delayedCall(1, function(){
+                    if (!state) return;
+                    state = false;
                     
-                //     $('#asideCont .btn_open').click();
-                // });
+                    $('#asideCont .btn_open').click();
+                });
             },
         },
     });
@@ -136,20 +152,7 @@ $(function(){ // DOCUMENT READY...
             // 스크롤 DOWN 액션
             state = false;
         },     
-    });
-
-    var delay = 300;
-    var timer = null;
-
-    $(window).on('resize', function(){
-        clearTimeout(timer);
-        timer = setTimeout(function(){
-            var winH = window.innerHeight;
-            var maxH = Math.abs((winH * 15 / 100) - winH);
-        
-            $wrap.find('.swiper-container').css('max-height',maxH);
-        }, delay);
-    }).trigger('resize');
+    });    
 
     
 
