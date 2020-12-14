@@ -315,6 +315,35 @@ $(function(){ // DOCUMENT READY...
 
 
 
+    /* 여러분의 보험고민은 */ 
+    var $wrap = $('#secWorry');
+
+    scrollAction({
+        target: $wrap,
+        top: 10,
+        scrollDownAction : function(){
+            // 스크롤 DOWN 액션
+            $wrap.addClass('active');
+        },
+    });
+
+    scrollAction({
+        target: $wrap,
+        top: 100,
+        scrollUpAction : function(){
+            // 스크롤 UP 액션
+            $wrap.removeClass('active');
+        },
+    });
+
+
+
+})();/*
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+*/(function(){
+
+
+
     /* 수상내역 */
     var $wrap = $('#secAward');
     var Y;

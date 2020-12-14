@@ -330,9 +330,9 @@
 #secWorry .worry.type_c {margin-right:0}
 #secWorry .worry .question {height:89px;padding:38px 0 0 40px;font-size:18px;line-height:1.3em;background:url('/img/visits/main_2020/worry_card_bg.jpg') 0 0 no-repeat;}
 #secWorry .worry .answer {position:relative;margin-top:-56px;padding:100px 0 0 28px}
-#secWorry .worry .answer .txt {font-size:20px;line-height:1.5em}
+#secWorry .worry .answer .txt {font-size:20px;line-height:1.5em;opacity:0;transform:translateX(10%)}
 #secWorry .worry .answer .txt strong {font-size:26px;font-weight:bold;color:#Fff}
-#secWorry .worry .answer .model {position:absolute;z-index:1;bottom:-40px}
+#secWorry .worry .answer .model {position:absolute;z-index:1;bottom:-40px;opacity:0}
 #secWorry .worry.type_a .tit_worry strong {color:#266ee3}
 #secWorry .worry.type_b .tit_worry strong {color:#ed6639}
 #secWorry .worry.type_c .tit_worry strong {color:#0eb57c}
@@ -346,6 +346,23 @@
 #secWorry .worry.type_a .answer .model {left:-5px}
 #secWorry .worry.type_b .answer .model {bottom:-55px}
 #secWorry .worry.type_c .answer .model {right:-5px}
+#secWorry.active .worry .answer .txt {opacity:1;transform:translateX(0);transition:0.6s all ease-in-out}
+#secWorry.active .worry.type_a .answer .txt:nth-child(1) {transition-delay:0s}
+#secWorry.active .worry.type_a .answer .txt:nth-child(2) {transition-delay:0.2s}
+#secWorry.active .worry.type_a .answer .txt:nth-child(3) {transition-delay:0.4s}
+#secWorry.active .worry.type_a .answer .txt:nth-child(4) {transition-delay:0.6s}
+#secWorry.active .worry.type_b .answer .txt:nth-child(1) {transition-delay:1s}
+#secWorry.active .worry.type_b .answer .txt:nth-child(2) {transition-delay:1.2s}
+#secWorry.active .worry.type_b .answer .txt:nth-child(3) {transition-delay:1.4s}
+#secWorry.active .worry.type_b .answer .txt:nth-child(4) {transition-delay:1.6s}
+#secWorry.active .worry.type_c .answer .txt:nth-child(1) {transition-delay:2s}
+#secWorry.active .worry.type_c .answer .txt:nth-child(2) {transition-delay:2.2s}
+#secWorry.active .worry.type_c .answer .txt:nth-child(3) {transition-delay:2.4s}
+#secWorry.active .worry.type_c .answer .txt:nth-child(4) {transition-delay:2.6s}
+#secWorry.active .worry .answer .model {opacity:1;transition:0.6s all ease-in-out}
+#secWorry.active .worry.type_a .answer .model {transition-delay:0.8s}
+#secWorry.active .worry.type_b .answer .model {transition-delay:1.8s}
+#secWorry.active .worry.type_c .answer .model {transition-delay:2.8s}
 
 /* 수상내역 */
 #secAward {overflow:hidden;position:relative;padding:77px 0 90px}
