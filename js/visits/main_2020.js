@@ -408,20 +408,23 @@ $(function(){ // DOCUMENT READY...
     /* 방문상담신청 */
     var $wrap = $('#freeConsult');
 
+    //map animate
+    TweenMax.to($wrap.find('.line'), 20, {ease:Power0.easeNone, strokeDashoffset:-1000, repeat:-1});
+
     // swiper
     var swiper = new Swiper($wrap.find('.swiper-container'), {
         autoplay: {
             delay: 1400,
             disableOnInteraction : false,
         },
+        speed: 600,
+        loop : true,
         pagination: {
             el: $wrap.find('.swiper-pagination'),
             clickable: true,
         },
-        speed: 600,
-        loop : true,
     });
-
+    
     // 입력폼
     $wrap.find('.formMemo textarea').html('상담가능일시 : \r\n내용 :');
 

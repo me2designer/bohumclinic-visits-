@@ -434,9 +434,9 @@ _:-ms-fullscreen, :root #secAward .year {background:none}
 @keyframes consultBlur {
     100%        {opacity:0.4;transform: scale(0.8);}
 }
-@keyframes consultLine {
+/* @keyframes consultLine {
     100%        {stroke-dashoffset:1000}
-}
+} */
 
 /* 방문상담신청 - form_01 수정 */
 #freeConsult .loadForm {float:right;width:501px;padding:40px 30px;border:1px solid #d5d5d5;background-color:#fff;box-shadow:0 0 4px rgba(0,0,0,0.3)}
