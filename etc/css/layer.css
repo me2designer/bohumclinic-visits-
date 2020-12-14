@@ -13,7 +13,8 @@
 #visitsMainConsultComp {position:relative;width:710px;height:790px;padding:226px 42px 42px;background:#467ed8 url('/etc/img/visits_main_consult_comp_bg.jpg') 0 0 no-repeat;background-size:cover}
 #visitsMainConsultComp .tit_layer {position:absolute;top:78px;left:50px;font-size:30px;color:#fff;letter-spacing:-0.03em}
 #visitsMainConsultComp .tit_layer::after {content:'';position:absolute;top:-32px;left:0;width:340px;height:130px;background:url('/etc/img/visits_main_consult_comp_tit_bg.png') 0 0 no-repeat}
-#visitsMainConsultComp .list_profile {margin-bottom:30px;padding:23px 30px;border:1px solid #d1d1d1;border-radius:4px;background-color:#fff;}
+#visitsMainConsultComp .list_profile {position:relative;margin-bottom:30px;padding:23px 30px;border:1px solid #d1d1d1;border-radius:4px;background-color:#fff;}
+#visitsMainConsultComp .list_profile::before {content:'';position:absolute;top:-199px;right:20px;width:239px;height:198px;background:url('/etc/img/visits_main_consult_comp_model.png') 0 0 no-repeat}
 #visitsMainConsultComp .list_profile::after {content:'';display:block;visibility:hidden;height:0;font-size:0;clear:both}
 #visitsMainConsultComp .list_profile li {float:left;width:50%;margin-bottom:15px}
 #visitsMainConsultComp .list_profile li:nth-child(n+7) {margin-bottom:0}
