@@ -411,18 +411,31 @@ _:-ms-fullscreen, :root #secAward .year {background:none}
 #freeConsult .swiper-pagination-bullet {width:15px;height:4px;border-radius:2em;background-color:#fff}
 #freeConsult .swiper-pagination-bullet-active {width:37px;background-color:#fff}
 #freeConsult .map {position:absolute;top:-90px;left:-108px}
-#freeConsult .map i {position:absolute;width:133px;height:133px;background:url('/img/visits/main_2020/freeconsult_map_blur.png') 0 0 no-repeat;opacity:0.6;mix-blend-mode:screen;animation:consultBlur 1s infinite alternate ease-in-out}
-#freeConsult .map i:nth-child(1) {top:-68px;left:101px}
-#freeConsult .map i:nth-child(2) {top:-68px;left:301px;animation-delay:0.5s}
-#freeConsult .map i:nth-child(3) {top:75px;left:193px;animation-delay:0.1s}
+#freeConsult .map .line {position:absolute;top:0;left:-20px;width:467px;height:659px;fill:none;stroke:#fff336;stroke-width:3px;stroke-dasharray: 10, 6;animation:consultLine 20s linear infinite reverse}
+#freeConsult .map i {position:absolute;z-index:1;}
+#freeConsult .map i::before {content:'';position:absolute;top:50%;left:50%;width:17px;height:17px;border-radius:100%;background-color:#d9e9f5;transform:translate(-50%, -50%);}
+#freeConsult .map i::after {content:'';display:block;width:133px;height:133px;background:url('/img/visits/main_2020/freeconsult_map_blur.png') 0 0 no-repeat;opacity:0.6;mix-blend-mode:screen;animation:consultBlur 1s infinite alternate ease-in-out}
+#freeConsult .map i:nth-child(1) {top:-59px;left:109px}
+#freeConsult .map i:nth-child(2) {top:-66px;left:302px}
+#freeConsult .map i:nth-child(3) {top:75px;left:193px}
 #freeConsult .map i:nth-child(4) {top:120px;left:90px}
-#freeConsult .map i:nth-child(5) {top:144px;left:352px;animation-delay:0.2s}
-#freeConsult .map i:nth-child(6) {top:250px;left:111px;animation-delay:0.7s}
-#freeConsult .map i:nth-child(7) {top:224px;left:321px;animation-delay:0.5s}
-#freeConsult .map i:nth-child(8) {top:375px;left:80px}
-#freeConsult .map i:nth-child(9) {top:585px;left:24px;animation-delay:0.4s}
+#freeConsult .map i:nth-child(5) {top:145px;left:355px}
+#freeConsult .map i:nth-child(6) {top:251px;left:113px}
+#freeConsult .map i:nth-child(7) {top:229px;left:323px}
+#freeConsult .map i:nth-child(8) {top:380px;left:80px}
+#freeConsult .map i:nth-child(9) {top:589px;left:21px}
+#freeConsult .map i:nth-child(10) {top:310px;left:279px}
+#freeConsult .map i:nth-child(2)::after {animation-delay:0.5s}
+#freeConsult .map i:nth-child(3)::after {animation-delay:0.1s}
+#freeConsult .map i:nth-child(5)::after {animation-delay:0.2s}
+#freeConsult .map i:nth-child(6)::after {animation-delay:0.7s}
+#freeConsult .map i:nth-child(7)::after {animation-delay:0.5s}
+#freeConsult .map i:nth-child(9)::after {animation-delay:0.4s}
 @keyframes consultBlur {
     100%        {opacity:0.4;transform: scale(0.8);}
+}
+@keyframes consultLine {
+    100%        {stroke-dashoffset:1000}
 }
 
 /* 방문상담신청 - form_01 수정 */
