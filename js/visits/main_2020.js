@@ -287,7 +287,7 @@ $(function(){ // DOCUMENT READY...
         scrollDownAction : function(){
             // 스크롤 DOWN 액션
             tl.addLabel("span", 0)
-              .to($wrap.find('.bg .line'), 2, {strokeDasharray:3460, strokeDashoffset:1730, ease:Linear.easeNone})
+              .to($wrap.find('.bg .line'), 2, {strokeDashoffset:1290, ease:Linear.easeNone})
               .staggerTo($wrap.find('.bg span'), 0.5, {opacity:1}, 0.5, "span")
               .staggerTo($wrap.find('.item_network'), 2, {backgroundColor:'rgba(0,0,0,0.7)', className:'item_network on'}, 0.5);
 
@@ -301,7 +301,7 @@ $(function(){ // DOCUMENT READY...
         scrollUpAction : function(){
             // 스크롤 UP 액션
             tl.kill();
-            $wrap.find('.bg .line').css({'stroke-dasharray':2000, 'stroke-dashoffset':2000});
+            $wrap.find('.bg .line').css({'stroke-dashoffset':3000});
             $wrap.find('.bg span').css({opacity:0});
             $wrap.find('.item_network').css({'background-color':'rgba(0,0,0,0)'}).removeClass('on');
         },
