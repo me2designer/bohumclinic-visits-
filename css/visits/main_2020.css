@@ -426,7 +426,8 @@ _:-ms-fullscreen, :root #secAward .year {background:none}
 #freeConsult .swiper-pagination-bullet {width:15px;height:4px;border-radius:2em;background-color:#fff}
 #freeConsult .swiper-pagination-bullet-active {width:37px;background-color:#fff}
 #freeConsult .map {position:absolute;top:-90px;left:-108px}
-#freeConsult .map .line {position:absolute;top:0;left:-20px;width:467px;height:659px;fill:none;stroke:#fff336;stroke-width:3px;stroke-dasharray: 10, 6;animation:consultLine 20s linear infinite reverse}
+#freeConsult .map .line {position:absolute;top:0;left:-20px;width:467px;height:659px}
+/* #freeConsult .map .line {position:absolute;top:0;left:-20px;width:467px;height:659px;fill:none;stroke:#fff336;stroke-width:3px;stroke-dasharray:1000;stroke-dashoffset:-1000;animation:consultLine 20s linear infinite reverse} */
 #freeConsult .map i {position:absolute;z-index:1;}
 #freeConsult .map i::before {content:'';position:absolute;top:50%;left:50%;width:17px;height:17px;border-radius:100%;background-color:#d9e9f5;transform:translate(-50%, -50%);}
 #freeConsult .map i::after {content:'';display:block;width:133px;height:133px;background:url('/img/visits/main_2020/freeconsult_map_blur.png') 0 0 no-repeat;opacity:0.6;mix-blend-mode:screen;animation:consultBlur 1s infinite alternate ease-in-out}

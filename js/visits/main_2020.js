@@ -439,9 +439,42 @@ $(function(){ // DOCUMENT READY...
 
     /* 방문상담신청 */
     var $wrap = $('#freeConsult');
-
+    
     //map animate
-    TweenMax.to($wrap.find('.line'), 20, {ease:Power0.easeNone, strokeDashoffset:-1000, repeat:-1});
+    var $make = $wrap.find('#theMask')
+    var $loop = $wrap.find('#maskReveal')
+    var tl = new TimelineMax();
+    TweenMax.set($make.find('path'), {strokeDasharray:1000, strokeDashoffset:1000});
+
+    scrollAction({
+        target: $wrap,
+        top: 30,
+        scrollDownAction : function(){
+            // 스크롤 DOWN 액션        
+            tl.addLabel("span", 0)
+                .addLabel("loop", 2)
+                .to($make.find('.line1'), 3, {ease:Power0.easeNone, strokeDashoffset:0}, "span")
+                .to($make.find('.line2'), 3, {ease:Power0.easeNone, strokeDashoffset:0, delay:0.2}, "span")
+                .to($make.find('.line3'), 2.5, {ease:Power0.easeNone, strokeDashoffset:0}, "span")
+                .to($make.find('.line4'), 3.5, {ease:Power0.easeNone, strokeDashoffset:0, delay:0.2}, "span")
+                .to($make.find('.line5'), 3, {ease:Power0.easeNone, strokeDashoffset:0}, "span")
+                .to($make.find('.line6'), 3.5, {ease:Power0.easeNone, strokeDashoffset:0, delay:0.3}, "span")
+                .to($make.find('.line7'), 3, {ease:Power0.easeNone, strokeDashoffset:0}, "span")
+                .to($loop.find('path'), 10, {ease:Power0.easeNone, strokeDashoffset:-1000, repeat:-1}, "loop");
+
+            tl.restart();
+        },
+    });
+
+    scrollAction({
+        target: $wrap,
+        top: 100,
+        scrollUpAction : function(){
+            // 스크롤 UP 액션
+            tl.kill();
+            TweenMax.set($make.find('path'), {strokeDasharray:1000, strokeDashoffset:1000});
+        },
+    });
 
     // swiper
     var swiper = new Swiper($wrap.find('.swiper-container'), {
