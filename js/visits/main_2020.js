@@ -89,7 +89,7 @@ $(function(){ // DOCUMENT READY...
 
     /* 메인 비주얼 */
     var $wrap = $('#secVisual');
-    
+
     // max-Height;
     var delay = 300;
     var timer = null;
@@ -99,13 +99,13 @@ $(function(){ // DOCUMENT READY...
         timer = setTimeout(function(){
             var winH = window.innerHeight;
             var maxH = Math.abs((winH * 15 / 100) - winH);
-        
+
             $wrap.find('.swiper-container').css('max-height',maxH);
         }, delay);
     }).trigger('resize');
 
     // swiper
-    var state = false; 
+    var state = true;
     var swiper = new Swiper($wrap.find('.swiper-container'), {
         autoplay: {
             delay: 4000,
@@ -119,14 +119,12 @@ $(function(){ // DOCUMENT READY...
             clickable: true,
         },
         on : {
-            init : function(){                
+            init : function(){
                 var $this = $wrap.find('.swiper-slide-active');
 
                 $wrap.addClass('active');
                 TweenMax.set($wrap.find('.bg'), {scale:1.15});
                 TweenMax.to($this.find('.bg'), 5, {ease:Linear.easeNone, scale:1.01});
-
-                state = true;
             },
             slideChangeTransitionEnd : function(){
                 var $this = $wrap.find('.swiper-slide-active');
@@ -136,8 +134,10 @@ $(function(){ // DOCUMENT READY...
                 TweenMax.delayedCall(1, function(){
                     if (!state) return;
                     state = false;
-                    
-                    $('#asideCont .btn_open').click();
+
+                    if (!$('#asideCont').hasClass('active')){
+                        $('#asideCont .btn_open').click();
+                    }
                 });
             },
         },
@@ -147,14 +147,14 @@ $(function(){ // DOCUMENT READY...
     var $secService = $('#secService');
     scrollAction({
         target: $secService,
-        top: 90,
+        top: 60,
         scrollDownAction : function(){
             // 스크롤 DOWN 액션
             state = false;
-        },     
-    });    
+        },
+    });
 
-    
+
 
 })();/*
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -280,7 +280,7 @@ $(function(){ // DOCUMENT READY...
     /* 전문가 네트워크 */
     var $wrap = $('#secNetwork');
     var tl = new TimelineMax();
-    
+
     scrollAction({
         target: $wrap,
         top: 10,
@@ -315,7 +315,7 @@ $(function(){ // DOCUMENT READY...
 
 
 
-    /* 여러분의 보험고민은 */ 
+    /* 여러분의 보험고민은 */
     var $wrap = $('#secWorry');
 
     scrollAction({
@@ -456,7 +456,7 @@ $(function(){ // DOCUMENT READY...
             clickable: true,
         },
     });
-    
+
     // 입력폼
     $wrap.find('.formMemo textarea').html('상담가능일시 : \r\n내용 :');
 
@@ -598,7 +598,7 @@ $(function(){ // DOCUMENT READY...
         },
         scrollUpAction : function(){
             // 스크롤 UP 액션
-            $wrap.removeClass('btnChange');                        
+            $wrap.removeClass('btnChange');
         },
     });
 
