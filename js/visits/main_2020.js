@@ -882,7 +882,9 @@ $(function(){ // DOCUMENT READY...
                 var itemCss = {borderColor:'#f6d039', color:'#000', backgroundColor:'#f6d039'}
                 var setTimeStep =  new TimelineMax({repeatDelay:1, repeat:-1})
 
-                setTimeStep.to($wrap, 0.5, {})
+                setTimeStep.set($wrap.find('.item_step'), {borderColor:'#fff'})
+                            .set($wrap.find('.bg.fst'), {strokeDasharray:'1100, 1300'})
+                            .to($wrap, 0.5, {})
                             .to($wrap.find('.item_step:eq(0)'), 0.5, itemCss)
                             .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-1550'})
                             .to($wrap.find('.item_step:eq(1)'), 0.5, itemCss)
