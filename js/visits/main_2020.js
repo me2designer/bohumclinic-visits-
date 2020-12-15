@@ -105,7 +105,7 @@ $(function(){ // DOCUMENT READY...
     }).trigger('resize');
 
     // swiper
-    var state = true;
+    var autoPlay = true;
     var swiper = new Swiper($wrap.find('.swiper-container'), {
         autoplay: {
             delay: 4000,
@@ -132,8 +132,8 @@ $(function(){ // DOCUMENT READY...
                 TweenMax.set($wrap.find('.bg'), {scale:1.15});
                 TweenMax.to($this.find('.bg'), 5, {ease:Linear.easeNone, scale:1.01});
                 TweenMax.delayedCall(1, function(){
-                    if (!state) return;
-                    state = false;
+                    if (!autoPlay) return;
+                    autoPlay = false;
 
                     if (!$('#asideCont').hasClass('active')){
                         $('#asideCont .btn_open').click();
@@ -150,7 +150,7 @@ $(function(){ // DOCUMENT READY...
         top: 60,
         scrollDownAction : function(){
             // 스크롤 DOWN 액션
-            state = false;
+            autoPlay = false;
         },
     });
 
@@ -678,6 +678,9 @@ $(function(){ // DOCUMENT READY...
                     .to($step.find('.item_step:eq(4)'), 1, itemCss)
                     .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-2640', strokeDasharray:'1220, 1300'})
                     .to($step.find('.item_step:eq(5)'), 1, itemCss)
+                    .to($step.find('.item_step:eq(5)'), 1, {scale:1.2})
+                    .to($step.find('.item_step:eq(5)'), 1, {scale:1})
+                    .to($step.find('.item_step:eq(5)'), 1, {scale:1.2})
                     .to($step, 0, {delay:1})
 
         function updateStats() {

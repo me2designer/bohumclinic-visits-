@@ -139,7 +139,7 @@
 .swiper-container {-ms-user-select:none;-moz-user-select:-moz-none;-webkit-user-select:none;-khtml-user-select:none;user-select:none} /* Text 드래그 방지 */
 
 /* 메인 비주얼 */
-#secVisual {height:900px;;padding-top:90px}
+#secVisual {padding-top:90px}
 #secVisual .swiper-container {width:calc(100% - 100px);height:calc(100vh - 90px);min-height:600px;max-height:900px;}
 #secVisual .swiper-slide {overflow:hidden}
 #secVisual .swiper-slide .bg {position:absolute;top:0;bottom:0;left:0;right:0;background:center center no-repeat;background-size:cover;opacity:0;transform:rotate(.001deg);}
