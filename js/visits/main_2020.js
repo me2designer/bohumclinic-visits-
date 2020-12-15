@@ -655,7 +655,7 @@ $(function(){ // DOCUMENT READY...
 
     var stepFnc = function(){
         var itemCss = {borderColor:'#f6d039', color:'#000', backgroundColor:'#f6d039'}
-        setTimeStep =  new TimelineMax({delay:0.5,onUpdate:updateStats, onComplete:function(){
+        setTimeStep =  new TimelineMax({onUpdate:updateStats, onComplete:function(){
             if (!$wrap.hasClass('active')) {
                     setTimeStep.kill();
                     return;
@@ -667,6 +667,7 @@ $(function(){ // DOCUMENT READY...
         setTimeStep.call(function(){
                         if(!stepPlay) stepPlay = true;
                     })
+                    .to($step, 0.5, {})
                     .to($step.find('.item_step:eq(0)'), 1, itemCss)
                     .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-1550'})
                     .to($step.find('.item_step:eq(1)'), 1, itemCss)
@@ -677,11 +678,13 @@ $(function(){ // DOCUMENT READY...
                     .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-2410'})
                     .to($step.find('.item_step:eq(4)'), 1, itemCss)
                     .to($step.find('.bg.fst'), 0.5, {strokeDashoffset:'-2640', strokeDasharray:'1220, 1300'})
-                    .to($step.find('.item_step:eq(5)'), 1, itemCss)
-                    .to($step.find('.item_step:eq(5)'), 1, {scale:1.2})
-                    .to($step.find('.item_step:eq(5)'), 1, {scale:1})
-                    .to($step.find('.item_step:eq(5)'), 1, {scale:1.2})
-                    .to($step, 0, {delay:1})
+                    .to($step.find('.item_step:eq(5)'), 1, {borderColor:'#f6d039', color:'#000', backgroundColor:'#f6d039', scale:1.2})
+                    .to($step.find('.item_step:eq(5)'), 0.5, {scale:1})
+                    .to($step.find('.item_step:eq(5)'), 0.5, {scale:1.2})
+                    .to($step.find('.item_step:eq(5)'), 0.5, {scale:1})
+                    .to($step.find('.item_step:eq(5)'), 0.5, {scale:1.2})
+                    .to($step.find('.item_step:eq(5)'), 0.5, {scale:1})
+                    .to($step, 0.5, {})
 
         function updateStats() {
             var timer = setTimeStep.totalProgress().toFixed(3); //소수점 3자리
@@ -876,11 +879,11 @@ $(function(){ // DOCUMENT READY...
                 // SVG Import
                 $('img[src*=".svg"]').makeSvg();
 
-
                 var itemCss = {borderColor:'#f6d039', color:'#000', backgroundColor:'#f6d039'}
                 var setTimeStep =  new TimelineMax({repeatDelay:1, repeat:-1})
 
-                setTimeStep.to($wrap.find('.item_step:eq(0)'), 0.5, itemCss)
+                setTimeStep.to($wrap, 0.5, {})
+                            .to($wrap.find('.item_step:eq(0)'), 0.5, itemCss)
                             .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-1550'})
                             .to($wrap.find('.item_step:eq(1)'), 0.5, itemCss)
                             .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-1810'})
@@ -890,7 +893,12 @@ $(function(){ // DOCUMENT READY...
                             .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-2410'})
                             .to($wrap.find('.item_step:eq(4)'), 0.5, itemCss)
                             .to($wrap.find('.bg.fst'), 0.5, {strokeDashoffset:'-2640', strokeDasharray:'1220, 1300'})
-                            .to($wrap.find('.item_step:eq(5)'), 0.5, itemCss)
+                            .to($wrap.find('.item_step:eq(5)'), 0.5, {borderColor:'#f6d039', color:'#000', backgroundColor:'#f6d039', scale:1.2})
+                            .to($wrap.find('.item_step:eq(5)'), 0.5, {scale:1})
+                            .to($wrap.find('.item_step:eq(5)'), 0.5, {scale:1.2})
+                            .to($wrap.find('.item_step:eq(5)'), 0.5, {scale:1})
+                            .to($wrap.find('.item_step:eq(5)'), 0.5, {scale:1.2})
+                            .to($wrap.find('.item_step:eq(5)'), 0.5, {scale:1})
             },
         });
     }
