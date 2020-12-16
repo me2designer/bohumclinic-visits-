@@ -216,10 +216,10 @@ $(function(){ // DOCUMENT READY...
                 var $count = $this.find('.count');
                 var $num = $this.find('.num');
                 var _countWidth = $count.width();
-                var _countNum = $num.html();
+                var _countNum = $num.html();                
 
                 $count.css('min-width',_countWidth);
-
+        
                 if ($num.hasClass('animateNumber')){
                     $num.animateNumber({
                         totalPlayTime : 600,
@@ -385,10 +385,10 @@ $(function(){ // DOCUMENT READY...
 
      // 본문
      var swiper = new Swiper($wrap.find('.swiper-container'), {
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction : false,
-        },
+        // autoplay: {
+        //     delay: 3000,
+        //     disableOnInteraction : false,
+        // },
         fadeEffect: { crossFade: true },
         virtualTranslate: true,
         slidersPerView: 1,
