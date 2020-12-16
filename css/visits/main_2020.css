@@ -140,7 +140,7 @@
 
 /* 메인 비주얼 */
 #secVisual {padding-top:90px}
-#secVisual .swiper-container {width:calc(100% - 100px);height:calc(100vh - 90px);min-height:500px;max-height:800px;}
+#secVisual .swiper-container {width:calc(100% - 100px);height:calc(100vh - 90px);min-height:600px;max-height:900px;}
 #secVisual .swiper-slide {overflow:hidden}
 #secVisual .swiper-slide .bg {position:absolute;top:0;bottom:0;left:0;right:0;background:center center no-repeat;background-size:cover;opacity:0;transform:rotate(.001deg);}
 #secVisual .swiper-slide:nth-child(1) .bg {background-image:url('/img/visits/main_2020/visual_bg1.jpg')}
@@ -155,10 +155,10 @@
 #secVisual.active .swiper-slide .bg {opacity:1}
 
 /* 서비스 소개 */
-#secService {overflow:hidden;position:relative;height:700px}
-#secService::before {content:'';position:absolute;bottom:0;left:0;right:40%;height:300px;background-color:#87a4f7;transition:background-color 1s ease-in-out;transition:background-color 0.4s}
-#secService .inner::before {content:'';position:absolute;bottom:-122px;right:-74px;width:550px;height:550px;border-radius:100%;background:0 0 no-repeat;background-size:cover;transition:all 0.4s}
-#secService .tit_section {margin-bottom:40px;padding-top:60px;font-size:28px;font-weight:bold;text-align:center}
+#secService {overflow:hidden;position:relative;height:800px}
+#secService::before {content:'';position:absolute;bottom:0;left:0;right:40%;height:400px;background-color:#87a4f7;transition:background-color 1s ease-in-out;transition:background-color 0.4s}
+#secService .inner::before {content:'';position:absolute;bottom:-142px;right:-74px;width:650px;height:650px;border-radius:100%;background:0 0 no-repeat;background-size:cover;transition:all 0.4s}
+#secService .tit_section {margin-bottom:60px;padding-top:60px;font-size:28px;font-weight:bold;text-align:center}
 #secService .tab {margin-bottom:25px}
 #secService .tab .btn_tab {margin-right:45px;font-family:'CenturyGothic';font-size:22px;font-weight:bold;color:#a3a3a6}
 #secService .tab .btn_tab.on {transition:color 0.8s;animation:serviceTabOn 0.8s forwards ease-in-out}
@@ -210,13 +210,13 @@
 #secService[data-tab="2"] .tit_slide strong {color:#40be6f}
 
 /* 서비스 소개 - 첫번째 탭 */
-#secService .msg {position:absolute;top:240px;left:120px}
-#secService .msg .tit_msg {margin-bottom:48px;font-size:30px;color:#1e2cad;line-height:1.3em;opacity:0;transform:translateX(100px)}
+#secService .msg {position:absolute;top:250px;left:120px}
+#secService .msg .tit_msg {margin-bottom:68px;font-size:30px;color:#1e2cad;line-height:1.3em;opacity:0;transform:translateX(100px)}
 #secService .msg .desc_msg {font-size:20px;color:#fff;opacity:0;transform:translateX(100px)}
-#secService .msg .tit_thumb {position:absolute;bottom:-52px;left:400px;font-size:18px;color:#fff;white-space:nowrap;}
-#secService .msg .borderline {position:absolute;top:98px;left:0;width:773px;height:2px;background-color:#fff}
+#secService .msg .tit_thumb {position:absolute;top:380px;left:300px;font-size:18px;color:#fff;white-space:nowrap;}
+#secService .msg .borderline {position:absolute;top:110px;left:0;width:773px;height:2px;background-color:#fff}
 #secService .msg .borderline::after {content:'';position:absolute;top:-6px;right:0;width:14px;height:14px;border-radius:100%;background-color:#fff}
-#secService .swiper-pagination {bottom:32px;left:120px;opacity:0}
+#secService .swiper-pagination {top:695px;left:120px;opacity:0}
 #secService .swiper-pagination.on {opacity:1}
 #secService .swiper-pagination-bullet {width:15px;height:4px;margin-right:8px;border-radius:2em;background-color:#fff}
 #secService .swiper-pagination-bullet-active {width:40px;}
@@ -232,7 +232,7 @@
 #secService[data-slide="3"] [data-swiper-slide-index="0"] .desc_msg {opacity:0;transform:translateX(100px)}
 
 /* 서비스 소개 - 두번째 탭 */
-#secService .compare {position: absolute;top:226px;left:140px}
+#secService .compare {position: absolute;top:255px;left:140px}
 #secService .compare .box_compare {float:left;position:relative;width:172px;height:247px;margin-right:29px;padding:20px 0 20px 17px;border:1px solid  #f0f0f0;background-color:#fff;opacity:0}
 #secService .compare .box_compare::before {content:'';position:absolute;bottom:-4px;;right:-4px;z-index:-1;width:100%;height:100%;border:1px solid  #f0f0f0;background-color:#fff}
 #secService .compare .box_compare::after {content:'';display:block;visibility:hidden;height:0;font-size:0;clear:both}
@@ -240,8 +240,8 @@
 #secService .compare .box_compare:nth-child(2) .tit_type {border-color:#ff8f3c}
 #secService .compare .desc_type {font-family:'KoPubWorldBatang';font-size:18px}
 #secService .compare .price {position:absolute;bottom:8px;right:15px;font-style:italic;font-size:22px;font-weight:bold}
-#secService .vs {position:absolute;top: 290px;right: 503px;font-family:'CenturyGothic',serif;font-style:italic;font-size:80px;color: #fff;opacity:0;}
-#secService .receipt {position:absolute;top:73px;right:-19px}
+#secService .vs {position:absolute;top:320px;right:463px;font-family:'CenturyGothic',serif;font-style:italic;font-size:80px;color:#0db6c8;opacity:0}
+#secService .receipt {position:absolute;top:143px;right:33px}
 #secService .receipt2 {overflow:hidden;position:absolute;top:14px;left:23px}
 #secService .receipt2::before {content:'';position:absolute;top:3px;left:2px;right:6px;z-index:1;height:3px;background-color:rgba(0,0,0,0.3);filter:blur(3px)}
 #secService .receipt2 img {display:block;width:100%;height:auto;transform:translateY(-100%)}
@@ -266,7 +266,7 @@
 }
 
 /* 서비스 소개 - 세번째 탭 */
-#secService .notebook {position:absolute;bottom:150px;right:-151px;opacity:0;}
+#secService .notebook {position:absolute;bottom:150px;right:-49px;opacity:0;}
 #secService .notebook::before {content:'';position:absolute;top:43px;left:56px;z-index:1;width:595px;height:405px;background:url('/img/visits/main_2020/service_notebook_screen2.png') 0 0 no-repeat;opacity:0}
 #secService .notebook .smoke {overflow: hidden;;position:absolute;top:53px;right:126px;z-index:1;width:171px;height:228px}
 #secService .notebook .smoke::before {content:'';position:absolute;width:100%;height:100%;background:url('/img/visits/main_2020/service_coffee_smoke2.png') 0 0 no-repeat;transform:translateY(50px);opacity:0;animation:serviceCoffee 6s 3s infinite linear}
@@ -285,15 +285,15 @@
 }
 
 /* 전문가 네트워크 */
-#secNetwork {height: 670px;background:url('/img/visits/main_2020/network_bg.jpg') center center no-repeat;background-size:cover;}
-#secNetwork .tit_section {position:absolute;top: 225px;left: 97px;font-size: 29px;font-weight:400;color:#fff;}
-#secNetwork .tit_section strong {display:block;font-size: 37px;}
+#secNetwork {height:800px;background:url('/img/visits/main_2020/network_bg.jpg') center center no-repeat;background-size:cover}
+#secNetwork .tit_section {position:absolute;top:274px;left:68px;font-size:32px;font-weight:400;color:#fff}
+#secNetwork .tit_section strong {display:block;font-size:44px}
 #secNetwork .list_network {position:relative;z-index:1}
 #secNetwork .item_network {position:absolute;display:flex;align-items:center;width:345px;height:136px;border-radius:6px;background-color:rgba(0,0,0,0)}
-#secNetwork .item_network:nth-child(1) {top: 46px;left:512px;}
-#secNetwork .item_network:nth-child(2) {top: 205px;left:1001px;}
-#secNetwork .item_network:nth-child(3) {top: 367px;left:350px;}
-#secNetwork .item_network:nth-child(4) {top: 490px;left:833px;}
+#secNetwork .item_network:nth-child(1) {top:86px;left:512px}
+#secNetwork .item_network:nth-child(2) {top:295px;left:1001px}
+#secNetwork .item_network:nth-child(3) {top:447px;left:350px}
+#secNetwork .item_network:nth-child(4) {top:595px;left:833px}
 #secNetwork .item_network .item_inner:first-child {width:155px;border-right:1px solid transparent}
 #secNetwork .item_network .item_inner:last-child {padding-left:33px}
 #secNetwork .box_ico {position:relative;height:auto;margin-bottom:5px;text-align:center;stroke:#fff;stroke-width:2px}
@@ -305,13 +305,13 @@
 #secNetwork .box_ico .ico4 {height:53px}
 #secNetwork .tit {font-size:16px;font-weight:700;color:#fff;text-align:center}
 #secNetwork .desc {font-size:16px;color:#d0d0d0;line-height:1.3em;opacity:0}
-#secNetwork .bg {position:absolute;top: 204px;left:451px;}
+#secNetwork .bg {position:absolute;top:244px;left:451px}
 #secNetwork .bg .line {width:652px;height:665px;stroke:#fff;stroke-width:1px;stroke-opacity:0.7;stroke-dasharray:3000;stroke-dashoffset:3000}
 #secNetwork .bg span {position:absolute;width:12px;height:12px;border-radius:100%;background:#fff;box-shadow:0 0 8px rgba(255,255,255,0.5);opacity:0}
 #secNetwork .bg span:nth-child(1) {top:-7px;left:143px}
-#secNetwork .bg span:nth-child(2) {top: 160px;right:-4px;}
-#secNetwork .bg span:nth-child(3) {top: 322px;left:-5px;}
-#secNetwork .bg span:nth-child(4) {top: 436px;right:161px;}
+#secNetwork .bg span:nth-child(2) {top:212px;right:-4px}
+#secNetwork .bg span:nth-child(3) {top:366px;left:-5px}
+#secNetwork .bg span:nth-child(4) {top:516px;right:161px}
 #secNetwork .item_network.on .ico.shadow {opacity:0;transition:opacity 0.5s}
 #secNetwork .item_network.on .box_ico #color {stroke:#f3ad36;transition:stroke 0.5s}
 #secNetwork .item_network.on .desc {opacity:1;transition:opacity 0.5s}
@@ -364,28 +364,28 @@
 #secWorry.active .worry.type_c .answer .model {transition-delay:4.8s}
 
 /* 수상내역 */
-#secAward {overflow:hidden;position:relative;padding: 50px 0 50px;}
-#secAward::after {content:'';position:absolute;left:50%;bottom: 50px;width:100%;height:1px;background-color:#dcdee1;transform:translateX(-50%);}
+#secAward {overflow:hidden;position:relative;padding:50px 0 90px}
+#secAward::after {content:'';position:absolute;left:50%;bottom:90px;width:100%;height:1px;background-color:#dcdee1;transform:translateX(-50%)}
 #secAward .tit_section {font-size:28px;font-weight:700;text-align:center}
 
 /* 수상내역 - .swiper-container */
 #secAward .swiper-container,
 #secAward .swiper-container * {pointer-events:none}
-#secAward .tit_slide {position:absolute;top: 120px;font-size:20px;color:#457dd8;}
-#secAward .tit_slide.right {right: 265px;}
-#secAward .tit_slide.left {left: 266px;}
+#secAward .tit_slide {position:absolute;top:160px;font-size:20px;color:#457dd8}
+#secAward .tit_slide.right {right:176px}
+#secAward .tit_slide.left {left:186px}
 #secAward .trophy {display:block;position:relative;z-index:1;margin:0 auto}
-#secAward .year {position:absolute;top: 127px;left:0;right:0;padding-bottom:20px;color:#21a2de;text-align:center;background:linear-gradient(0deg,#1e61ba,#27c2c6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+#secAward .year {position:absolute;top:154px;left:0;right:0;padding-bottom:20px;color:#21a2de;text-align:center;background:linear-gradient(0deg,#1e61ba,#27c2c6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 #secAward .year::after {content:'';position:absolute;left: 50%;bottom:0;width: 69%;height: 35px;background: url('/img/visits/main_2020/award_year_shadow.png') center center no-repeat;background-size:cover;transform:translateX(-50%)}
-#secAward .year i {margin-left:25px;font-family:'CenturyGothic',sans-serif;font-size: 264px;font-weight:bold;line-height:1em;letter-spacing:-0.05em;}
+#secAward .year i {margin-left:25px;font-family:'CenturyGothic',sans-serif;font-size:343px;font-weight:bold;line-height:1em;letter-spacing:-0.05em}
 #secAward .year i:nth-of-type(1) {margin-left:0}
 _:-ms-fullscreen, :root #secAward .year {background:none}
 
 /* 수상내역 - .swiper-pagination */
-#secAward .swiper-pagination {position:relative;padding-bottom: 14px;}
+#secAward .swiper-pagination {position:relative;padding-bottom:20px}
 #secAward .swiper-pagination-bullet {width:185px;height:auto;;font-size:16px;text-align:center;background:none}
 #secAward .swiper-pagination-bullet::after {content:'';display:block;letter-spacing:-0.04em;white-space:pre;}
-#secAward .swiper-pagination-bullet strong {display:block;margin-bottom:5px;font-family:'CenturyGothic',sans-serif;font-size: 30px;line-height:1em;}
+#secAward .swiper-pagination-bullet strong {display:block;margin-bottom:5px;font-family:'CenturyGothic',sans-serif;font-size:42px;line-height:1em}
 #secAward .swiper-pagination-bullet-active strong {color:#457dd8}
 #secAward .swiper-pagination-bullet strong::after {content:'';display:block}
 #secAward .swiper-pagination-bullet:nth-child(1)::after {content:'한국 소비자만족 지수 \A 1위'}
@@ -409,11 +409,11 @@ _:-ms-fullscreen, :root #secAward .year {background:none}
 #secAward .swiper-pagination-bullet-active:nth-child(6) ~ .bar {left:975px}
 
 /* 수상내역 - .swiper-navigation */
-#secAward .swiper-navigation {position:absolute;left:0;right:0;top:0;bottom:0;}
+#secAward .swiper-navigation {position:absolute;left:0;right:0;top:0;bottom:0;margin:0 -100px}
 #secAward .swiper-button-black {width:65px;height:65px;border:1px solid #d8dade;border-radius:100%;background-size:auto 20px}
 
 /* 방문상담신청 */
-#freeConsult {overflow:hidden;padding: 50px 0;background:url('/img/visits/main_2020/freeconsult_bg.jpg') 0 0 no-repeat;background-size:cover;}
+#freeConsult {overflow:hidden;padding:90px 0 95px;background:url('/img/visits/main_2020/freeconsult_bg.jpg') 0 0 no-repeat;background-size:cover}
 #freeConsult .swiper-container {position:absolute;top:328px;left:170px;width:400px;padding-bottom:40px;}
 #freeConsult .tit_swiper {margin-bottom:25px;font-style:italic;font-size:36px;font-weight:bold;color:#fff;}
 #freeConsult .tit_swiper mark {position:relative;text-shadow:1px 1px 2px rgba(0,0,0,0.2)}
@@ -425,8 +425,9 @@ _:-ms-fullscreen, :root #secAward .year {background:none}
 #freeConsult .swiper-pagination {bottom:0;text-align:left}
 #freeConsult .swiper-pagination-bullet {width:15px;height:4px;border-radius:2em;background-color:#fff}
 #freeConsult .swiper-pagination-bullet-active {width:37px;background-color:#fff}
-#freeConsult .map {position:absolute;top: -54px;left:-108px;}
+#freeConsult .map {position:absolute;top:-90px;left:-108px}
 #freeConsult .map .line {position:absolute;top:0;left:-20px;width:467px;height:659px}
+/* #freeConsult .map .line {position:absolute;top:0;left:-20px;width:467px;height:659px;fill:none;stroke:#fff336;stroke-width:3px;stroke-dasharray:1000;stroke-dashoffset:-1000;animation:consultLine 20s linear infinite reverse} */
 #freeConsult .map i {position:absolute;z-index:1;}
 #freeConsult .map i::before {content:'';position:absolute;top:50%;left:50%;width:17px;height:17px;border-radius:100%;background-color:#d9e9f5;transform:translate(-50%, -50%);}
 #freeConsult .map i::after {content:'';display:block;width:133px;height:133px;background:url('/img/visits/main_2020/freeconsult_map_blur.png') 0 0 no-repeat;opacity:0.6;mix-blend-mode:screen;animation:consultBlur 1s infinite alternate ease-in-out}
@@ -449,6 +450,9 @@ _:-ms-fullscreen, :root #secAward .year {background:none}
 @keyframes consultBlur {
     100%        {opacity:0.4;transform: scale(0.8);}
 }
+/* @keyframes consultLine {
+    100%        {stroke-dashoffset:1000}
+} */
 
 /* 방문상담신청 - form_01 수정 */
 #freeConsult .loadForm {float:right;width:501px;padding:40px 30px;border:1px solid #d5d5d5;background-color:#fff;box-shadow:0 0 4px rgba(0,0,0,0.3)}
