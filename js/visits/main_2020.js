@@ -385,10 +385,10 @@ $(function(){ // DOCUMENT READY...
 
      // 본문
      var swiper = new Swiper($wrap.find('.swiper-container'), {
-        // autoplay: {
-        //     delay: 3000,
-        //     disableOnInteraction : false,
-        // },
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction : false,
+        },
         fadeEffect: { crossFade: true },
         virtualTranslate: true,
         slidersPerView: 1,
