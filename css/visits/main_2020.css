@@ -213,7 +213,7 @@
 #secService .msg {position:absolute;top:250px;left:120px}
 #secService .msg .tit_msg {margin-bottom:68px;font-size:30px;color:#1e2cad;line-height:1.3em;opacity:0;transform:translateX(100px)}
 #secService .msg .desc_msg {font-size:20px;color:#fff;opacity:0;transform:translateX(100px)}
-#secService .msg .tit_thumb {position:absolute;top:380px;left:300px;font-size:18px;color:#fff;white-space:nowrap;}
+#secService .msg .tit_thumb {position:absolute;top:290px;left:330px;font-size:18px;color:#fff;white-space:nowrap;}
 #secService .msg .borderline {position:absolute;top:110px;left:0;width:773px;height:2px;background-color:#fff}
 #secService .msg .borderline::after {content:'';position:absolute;top:-6px;right:0;width:14px;height:14px;border-radius:100%;background-color:#fff}
 #secService .swiper-pagination {top:695px;left:120px;opacity:0}
