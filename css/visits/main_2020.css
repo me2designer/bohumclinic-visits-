@@ -413,7 +413,7 @@ _:-ms-fullscreen, :root #secAward .year {background:none}
 #secAward .swiper-button-black {width:65px;height:65px;border:1px solid #d8dade;border-radius:100%;background-size:auto 20px}
 
 /* 방문상담신청 */
-#freeConsult {overflow:hidden;padding:90px 0 95px;background:url('/img/visits/main_2020/freeconsult_bg.jpg') 0 0 no-repeat;background-size:cover}
+#freeConsult {overflow:hidden;padding: 50px 0;background:url('/img/visits/main_2020/freeconsult_bg.jpg') 0 0 no-repeat;background-size:cover;}
 #freeConsult .swiper-container {position:absolute;top:328px;left:170px;width:400px;padding-bottom:40px;}
 #freeConsult .tit_swiper {margin-bottom:25px;font-style:italic;font-size:36px;font-weight:bold;color:#fff;}
 #freeConsult .tit_swiper mark {position:relative;text-shadow:1px 1px 2px rgba(0,0,0,0.2)}
@@ -425,9 +425,8 @@ _:-ms-fullscreen, :root #secAward .year {background:none}
 #freeConsult .swiper-pagination {bottom:0;text-align:left}
 #freeConsult .swiper-pagination-bullet {width:15px;height:4px;border-radius:2em;background-color:#fff}
 #freeConsult .swiper-pagination-bullet-active {width:37px;background-color:#fff}
-#freeConsult .map {position:absolute;top:-90px;left:-108px}
+#freeConsult .map {position:absolute;top: -54px;left:-108px;}
 #freeConsult .map .line {position:absolute;top:0;left:-20px;width:467px;height:659px}
-/* #freeConsult .map .line {position:absolute;top:0;left:-20px;width:467px;height:659px;fill:none;stroke:#fff336;stroke-width:3px;stroke-dasharray:1000;stroke-dashoffset:-1000;animation:consultLine 20s linear infinite reverse} */
 #freeConsult .map i {position:absolute;z-index:1;}
 #freeConsult .map i::before {content:'';position:absolute;top:50%;left:50%;width:17px;height:17px;border-radius:100%;background-color:#d9e9f5;transform:translate(-50%, -50%);}
 #freeConsult .map i::after {content:'';display:block;width:133px;height:133px;background:url('/img/visits/main_2020/freeconsult_map_blur.png') 0 0 no-repeat;opacity:0.6;mix-blend-mode:screen;animation:consultBlur 1s infinite alternate ease-in-out}
@@ -450,9 +449,6 @@ _:-ms-fullscreen, :root #secAward .year {background:none}
 @keyframes consultBlur {
     100%        {opacity:0.4;transform: scale(0.8);}
 }
-/* @keyframes consultLine {
-    100%        {stroke-dashoffset:1000}
-} */
 
 /* 방문상담신청 - form_01 수정 */
 #freeConsult .loadForm {float:right;width:501px;padding:40px 30px;border:1px solid #d5d5d5;background-color:#fff;box-shadow:0 0 4px rgba(0,0,0,0.3)}
