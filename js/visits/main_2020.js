@@ -98,7 +98,7 @@ $(function(){ // DOCUMENT READY...
         clearTimeout(timer);
         timer = setTimeout(function(){
             var winH = window.innerHeight;
-            var maxH = Math.abs((winH * 15 / 100) - winH);
+            var maxH = Math.abs((winH * 25 / 100) - winH);
 
             $wrap.find('.swiper-container').css('max-height',maxH);
         }, delay);
